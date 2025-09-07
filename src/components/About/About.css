@@ -1,0 +1,53 @@
+.about {
+  height: 624px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 56px;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.about__left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.about__right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  /* max-width: 400px; */
+}
+
+.about__right-title {
+  font-family: Roboto Slab, sans-serif;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 46px;
+  letter-spacing: 0px;
+  color: rgba(26, 27, 34, 1);
+  margin: 0 0 24px 0;
+}
+
+.about__right-description {
+  font-family: Roboto;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: 0px;
+  color: rgba(26, 27, 34, 1);
+  padding: 0;
+  margin: 0;
+}
+
+.about__left-image {
+  width: 464px;
+  height: 464px;
+  border-radius: 1000px;
+  object-fit: cover;
+}

@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "../Header/Header";
 import SearchForm from "../SearchForm/SearchForm";
+import About from "../About/About";
 import "./App.css";
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
         <Header />
         <SearchForm />
       </section>
+      <About />
     </div>
   );
 }
