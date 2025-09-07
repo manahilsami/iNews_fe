@@ -7,16 +7,45 @@
   padding: 0 104px;
   box-sizing: border-box;
   position: relative;
-  border-bottom: 1px solid white;
+  border-bottom: 0.25px solid rgba(255, 255, 255, 0.3);
 }
 
 .header__logo {
   width: 200px;
   height: 24px;
+  margin: 30px 0 26px 0;
 }
 
 .header__right {
   display: flex;
   align-items: center;
   gap: 42px;
+}
+
+.header__home {
+  font-family: Roboto, sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: 0px;
+  text-align: center;
+  vertical-align: middle;
+  color: rgba(255, 255, 255, 1);
+}
+.header__signin {
+  font-family: Roboto, sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: 0px;
+  color: rgba(255, 255, 255, 1);
+  border: 1px solid rgba(255, 255, 255, 1);
+  border-radius: 100px;
+  width: 176px;
+  height: 48px;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

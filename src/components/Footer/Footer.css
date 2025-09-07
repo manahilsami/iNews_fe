@@ -1,0 +1,53 @@
+.footer {
+  width: 100%;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 104px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.footer__right {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.footer__right-home {
+  font-family: Roboto, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: 0px;
+  color: rgba(26, 27, 34, 1);
+}
+
+.footer__right-tt {
+  font-family: Roboto, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: 0px;
+  color: rgba(26, 27, 34, 1);
+}
+
+.footer__right-github {
+  width: 24px;
+  height: 24px;
+}
+
+.footer__right-linkedin {
+  width: px;
+  height: 24px;
+}
+
+.footer__left-copyright {
+  font-family: Roboto, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: 0px;
+  color: rgba(182, 188, 191, 1);
+}
