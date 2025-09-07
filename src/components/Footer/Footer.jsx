@@ -14,12 +14,28 @@ function Footer() {
       <div className="footer__right">
         <p className="footer__right-home">Home</p>
         <p className="footer__right-tt">TripleTen</p>
-        <img src={github} alt="Github Logo" className="footer__right-github" />
-        <img
-          src={LinkedIn}
-          alt="LinkedIn Logo"
-          className="footer__right-linkedin"
-        />
+        <a
+          href="https://github.com/manahilsami"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            src={github}
+            alt="Github Logo"
+            className="footer__right-github"
+          />
+        </a>
+        <a
+          href="https://linkedin.com/in/manahil-sami"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            src={LinkedIn}
+            alt="LinkedIn Logo"
+            className="footer__right-linkedin"
+          />
+        </a>
       </div>
     </footer>
   );
