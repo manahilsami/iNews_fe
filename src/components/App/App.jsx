@@ -3,6 +3,7 @@ import Header from "../Header/Header";
 import SearchForm from "../SearchForm/SearchForm";
 import About from "../About/About";
 import Footer from "../Footer/Footer";
+import Preloader from "../Preloader/Preloader";
 import "./App.css";
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
         <Header />
         <SearchForm />
       </section>
+      <Preloader />
       <About />
       <Footer />
     </div>
