@@ -6,6 +6,7 @@
   align-items: center;
   justify-content: center;
   gap: 24px;
+  background-color: #f5f6f7;
 }
 
 .circle-preloader__circle {
