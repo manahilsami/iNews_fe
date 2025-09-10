@@ -2,11 +2,11 @@
   width: 400px;
   height: 576px;
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
   border-radius: 16px;
   position: relative;
+  background-color: #ffffff;
 }
 
 .news-card__image {
@@ -18,27 +18,33 @@
 }
 
 .news-card__bookmark {
-  background-image: url(../../images/bookmark.png);
+  background-image: url("../../images/bookmark.png");
   position: absolute;
   top: 24px;
   left: 336px;
-  background-color: white;
   width: 40px;
   height: 40px;
-  border-radius: 16px;
+  border-radius: 8px;
   border: none;
+  background-color: white;
+  background-repeat: no-repeat;
+  background-size: cover;
+  cursor: pointer;
 }
 
 .news-card__bookmark-colored {
-  background-image: url(../../images/bookmark-colored.png);
+  background-image: url("../../images/bookmark_colored.png");
   position: absolute;
   top: 24px;
   left: 336px;
-  background-color: white;
   width: 40px;
   height: 40px;
-  border-radius: 16px;
+  border-radius: 8px;
   border: none;
+  background-color: white;
+  background-repeat: no-repeat;
+  background-size: cover;
+  cursor: pointer;
 }
 
 .news-card__bookmark,
@@ -65,9 +71,16 @@
   font-size: 26px;
   line-height: 30px;
   letter-spacing: 0px;
-  width: 352px;
+  width: 100%;
   color: #1a1b22;
-  padding: 56px 24px 0 24px;
+  padding: 20px 0 12px 24px;
+  text-align: left;
+}
+.news-card__content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
 }
 
 .news-card__description {
@@ -82,7 +95,7 @@
   margin: 404px 24px 0 24px;
 }
 
-.news-card__souce {
+.news-card__source {
   font-family: Roboto Slab;
   font-weight: 700;
   font-size: 16px;

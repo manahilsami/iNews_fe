@@ -2,17 +2,15 @@ import React, { useState } from "react";
 import "./NewsCardList.css";
 import NewsCard from "../NewsCard/NewsCard";
 
-
 function NewsCardList() {
-  // Hard-coded array of news card objects
-  const [cards, setCards] = useState([
+  const [cards] = useState([
     {
       id: 1,
       title: "Sample News 1",
       description: "This is a description for news 1.",
       image: "https://via.placeholder.com/400x272",
       date: "2025-09-09",
-      source: "Source 1"
+      source: "Source 1",
     },
     {
       id: 2,
@@ -20,16 +18,52 @@ function NewsCardList() {
       description: "This is a description for news 2.",
       image: "https://via.placeholder.com/400x272",
       date: "2025-09-08",
-      source: "Source 2"
-    }
-    // Add more sample cards as needed
+      source: "Source 2",
+    },
+    {
+      id: 3,
+      title: "Sample News 3",
+      description: "This is a description for news 3.",
+      image: "https://via.placeholder.com/400x272",
+      date: "2025-09-07",
+      source: "Source 3",
+    },
+    {
+      id: 4,
+      title: "Sample News 4",
+      description: "This is a description for news 4.",
+      image: "https://via.placeholder.com/400x272",
+      date: "2025-09-06",
+      source: "Source 4",
+    },
+    {
+      id: 5,
+      title: "Sample News 5",
+      description: "This is a description for news 5.",
+      image: "https://via.placeholder.com/400x272",
+      date: "2025-09-05",
+      source: "Source 5",
+    },
   ]);
+  const [visibleCount, setVisibleCount] = useState(3);
+
+  const handleShowMore = () => {
+    setVisibleCount((prev) => Math.min(prev + 3, cards.length));
+  };
 
   return (
     <div className="news-card-list">
-      {cards.map((card) => (
-        <NewsCard key={card.id} card={card} />
-      ))}
+      <p className="news-card-list__title">Search Results</p>
+      <div className="news-card-list__grid">
+        {cards.slice(0, visibleCount).map((card) => (
+          <NewsCard key={card.id} card={card} />
+        ))}
+      </div>
+      {visibleCount < cards.length && (
+        <button className="news-card-list__show-more" onClick={handleShowMore}>
+          Show More
+        </button>
+      )}
     </div>
   );
 }

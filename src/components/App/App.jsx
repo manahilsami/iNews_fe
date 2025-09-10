@@ -4,6 +4,7 @@ import SearchForm from "../SearchForm/SearchForm";
 import About from "../About/About";
 import Footer from "../Footer/Footer";
 import Preloader from "../Preloader/Preloader";
+import NewsCardList from "../NewsCardList/NewsCardList";
 import "./App.css";
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
         <SearchForm />
       </section>
       <Preloader />
+      <NewsCardList />
       <About />
       <Footer />
     </div>
