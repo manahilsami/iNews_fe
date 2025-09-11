@@ -1,17 +1,23 @@
 import React, { useState } from "react";
 import Header from "../Header/Header";
-import SearchForm from "../SearchForm/SearchForm";
-import About from "../About/About";
+// import SearchForm from "../SearchForm/SearchForm";
+// import About from "../About/About";
 import Footer from "../Footer/Footer";
-import Preloader from "../Preloader/Preloader";
-import NewsCardList from "../NewsCardList/NewsCardList";
+// import Preloader from "../Preloader/Preloader";
+// import NewsCardList from "../NewsCardList/NewsCardList";
 import LoginModal from "../LoginModal/LoginModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
+import Main from "../Main/Main";
 import "./App.css";
 
 function App() {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false); // false by default to keep modal closed when app loads
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false); // false by default to keep modal closed when app loads
+
+  // dummy state for loading and search results
+  // later, these will be set based on API calls and user interactions
+  const [isLoading, setIsLoading] = useState(false);
+  const [searchResults, setSearchResults] = useState([]);
 
   // helper functions to open/close the login modal
   const handleOpenLoginModal = () => setIsLoginModalOpen(true);
@@ -55,15 +61,13 @@ function App() {
   // };
 
   return (
-    <div>
-      <section className="hero">
-        <Header onSignInClick={handleOpenLoginModal} />
-        <SearchForm />
-      </section>
-      <Preloader />
-      <NewsCardList />
-      <About />
+    <div className="app">
+      <Header onSignInClick={handleOpenLoginModal} />
+      <Main isLoading={isLoading} searchResults={searchResults} />
+
       <Footer />
+
+      {/* Modals */}
       <LoginModal
         isOpen={isLoginModalOpen}
         onClose={handleCloseLoginModal}
