@@ -1,11 +1,12 @@
+
 import "./Navigation.css";
 import React from "react";
 
-function Navigation() {
+function Navigation({ onSignInClick }) {
   return (
     <div className="navigation">
       <button className="navigation__home">Home</button>
-      <button className="navigation__signin">Sign In</button>
+      <button className="navigation__signin" onClick={onSignInClick}>Sign In</button>
     </div>
   );
 }

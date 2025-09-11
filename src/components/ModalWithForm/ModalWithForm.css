@@ -59,17 +59,17 @@
   width: 100%;
 }
 
-.modal__label {
+/* .modal__label {
   font-family: Inter;
   font-weight: 400;
   font-size: 12px;
   line-height: 100%;
   letter-spacing: 0%;
   color: #2f71e5;
-  /* padding-bottom: 24px; */
-}
+  padding-bottom: 24px;
+} */
 
-.modal__input {
+/* .modal__input {
   display: block;
   font-family: Inter;
   font-weight: 400;
@@ -84,11 +84,8 @@
   padding: 8px 0 0 0;
   color: #00000080;
   width: 100%;
-}
+} */
 
-.modal__form .modal__input:first-of-type {
+/* .modal__form .modal__input:first-of-type {
   padding-top: 10px;
-}
-
-.modal__button {
-}
+} */
