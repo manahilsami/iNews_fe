@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Routes, Route } from "react-router-dom";
 import Header from "../Header/Header";
 import SearchForm from "../SearchForm/SearchForm";
 // import About from "../About/About";
@@ -7,6 +8,7 @@ import Footer from "../Footer/Footer";
 // import NewsCardList from "../NewsCardList/NewsCardList";
 import LoginModal from "../LoginModal/LoginModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
+import SavedNews from "../SavedNews/SavedNews";
 import Main from "../Main/Main";
 import "./App.css";
 
@@ -66,7 +68,16 @@ function App() {
         <Header onSignInClick={handleOpenLoginModal} />
         <SearchForm />
       </section>
-      <Main isLoading={isLoading} searchResults={searchResults} />
+
+      <Routes>
+        <Route
+          path="/"
+          element={<Main isLoading={isLoading} searchResults={searchResults} />}
+        />
+        <Route path="/saved" element={<SavedNews />} />
+      </Routes>
+
+      {/* <Main isLoading={isLoading} searchResults={searchResults} /> */}
 
       <Footer />
 
