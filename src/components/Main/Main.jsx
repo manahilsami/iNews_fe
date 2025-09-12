@@ -9,7 +9,7 @@ function Main({ isLoading, searchResults }) {
     <main>
       {/* loader */}
       {isLoading && <Preloader />}
-      // only shows results if they exist
+      {/* only shows results if they exist */}
       {searchResults.length > 0 && <NewsCardList cards={searchResults} />}
       <About />
     </main>
