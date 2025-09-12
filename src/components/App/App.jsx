@@ -74,7 +74,7 @@ function App() {
           path="/"
           element={<Main isLoading={isLoading} searchResults={searchResults} />}
         />
-        <Route path="/saved" element={<SavedNews />} />
+        <Route path="/saved-news" element={<SavedNews />} />
       </Routes>
 
       {/* <Main isLoading={isLoading} searchResults={searchResults} /> */}
