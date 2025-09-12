@@ -7,10 +7,7 @@ import About from "../About/About";
 function Main({ isLoading, searchResults }) {
   return (
     <main>
-      <section className="hero">
-        <SearchForm />
-      </section>
-      // show loader while fetching data
+      {/* loader */}
       {isLoading && <Preloader />}
       // only shows results if they exist
       {searchResults.length > 0 && <NewsCardList cards={searchResults} />}

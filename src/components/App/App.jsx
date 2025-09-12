@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Header from "../Header/Header";
-// import SearchForm from "../SearchForm/SearchForm";
+import SearchForm from "../SearchForm/SearchForm";
 // import About from "../About/About";
 import Footer from "../Footer/Footer";
 // import Preloader from "../Preloader/Preloader";
@@ -61,8 +61,11 @@ function App() {
   // };
 
   return (
-    <div className="app">
-      <Header onSignInClick={handleOpenLoginModal} />
+    <div>
+      <section className="hero">
+        <Header onSignInClick={handleOpenLoginModal} />
+        <SearchForm />
+      </section>
       <Main isLoading={isLoading} searchResults={searchResults} />
 
       <Footer />
