@@ -23,7 +23,7 @@ function saveArticle(article, token) {
 
 function getSavedArticles(token) {
   return fetch(`${baseUrl}/articles`, {
-    headerse: {
+    headers: {
       authorization: `Bearer ${token}`,
     },
   }).then(checkResponse);
