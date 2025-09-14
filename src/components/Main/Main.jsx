@@ -6,9 +6,9 @@ import About from "../About/About";
 
 function Main({ isLoading, searchResults }) {
   return (
-    <main>
+    <main className="main">
       {/* loader */}
-      {isLoading && <Preloader />}
+      {isLoading && <Preloader />} {/* shows preloader while data is loading */}
       {/* only shows results if they exist */}
       {searchResults.length > 0 && <NewsCardList cards={searchResults} />}
       <About />

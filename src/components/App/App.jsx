@@ -83,7 +83,7 @@ function App() {
     <div>
       <section className="hero">
         <Header onSignInClick={handleOpenLoginModal} />
-        <SearchForm />
+        <SearchForm onSearch={handleSearch} />
       </section>
 
       <Routes>
