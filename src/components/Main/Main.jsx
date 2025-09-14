@@ -9,8 +9,19 @@ function Main({ isLoading, searchResults }) {
     <main className="main">
       {/* loader */}
       {isLoading && <Preloader />} {/* shows preloader while data is loading */}
-      {/* only shows results if they exist */}
-      {searchResults.length > 0 && <NewsCardList cards={searchResults} />}
+      {/* stops loading & shows search results if they exist */}
+      {!isLoading && searchResults.length > 0 && (
+        <NewsCardList cards={searchResults} />
+      )}
+      {/* loading stops and shows msg if no results found */}
+      {!isLoading && searchResults.length === 0 && (
+        <div className="main__no-results">
+          <h2 className="main__no-results-title">Nothing found</h2>
+          <p className="main__no-results-text">
+            Sorry, but nothing matched your terms.
+          </p>
+        </div>
+      )}
       <About />
     </main>
   );
