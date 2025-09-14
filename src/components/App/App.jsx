@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Routes, Route } from "react-router-dom";
+import { getNews } from "../../utils/newsApi";
 import Header from "../Header/Header";
 import SearchForm from "../SearchForm/SearchForm";
 // import About from "../About/About";
@@ -11,6 +12,7 @@ import RegisterModal from "../RegisterModal/RegisterModal";
 import SavedNews from "../SavedNews/SavedNews";
 import Main from "../Main/Main";
 import "./App.css";
+import { set } from "mongoose";
 
 function App() {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false); // false by default to keep modal closed when app loads
@@ -62,6 +64,21 @@ function App() {
   //   setIsRegisterModalOpen(false);
   // };
 
+  const handleSearch = (keyword) => {
+    setIsLoading(true); // this will show the preloader
+    getNews(keyword) // frontend API function that calls the newsAPI
+      .then((articles) => {
+        setSearchResults(articles); // stores the fetched articles in local state
+      })
+      .catch((err) => {
+        console.error(err);
+        setSearchResults([]); // if there's an error, results are cleared, hence the empty array
+      })
+      .finally(() => {
+        setIsLoading(false); // this hides the preloader when articles appear or error occurs
+      });
+  };
+
   return (
     <div>
       <section className="hero">
@@ -76,8 +93,6 @@ function App() {
         />
         <Route path="/saved-news" element={<SavedNews />} />
       </Routes>
-
-      {/* <Main isLoading={isLoading} searchResults={searchResults} /> */}
 
       <Footer />
 
