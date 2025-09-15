@@ -8,8 +8,10 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
-  justify-items: center;
+  justify-content: center;
   margin-bottom: 64px;
+  margin-left: 104px;
+  margin-right: 104px;
 }
 
 .news-card-list__title {
@@ -21,6 +23,7 @@
   color: #1a1b22;
   margin-bottom: 64px;
   padding-left: 104px;
+  padding-top: 80px;
 }
 
 .news-card-list__show-more {
