@@ -50,15 +50,15 @@ function NewsCardList({ cards }) {
   const handleShowMore = () => {
     setVisibleCount((prev) => Math.min(prev + 3, cards.length));
   };
-
   if (!cards || cards.length === 0) return null; // nothing to render
 
   return (
     <div className="news-card-list">
       <p className="news-card-list__title">Search Results</p>
+      {console.log("Cards passed to NewsCardList:", cards)}
       <div className="news-card-list__grid">
         {cards.slice(0, visibleCount).map((card) => (
-          <NewsCard key={card.url} card={card} />
+          <NewsCard key={card.link} card={card} />
         ))}
         {/* React requires a key prop when rendering lists to track which items change, are added, or removed. */}
       </div>
