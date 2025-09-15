@@ -66,13 +66,16 @@ export default function LoginModal({
           >
             Sign in
           </button>
-          <button
-            type="button"
-            className="login-modal__login-or-text"
-            onClick={onRegisterClick}
-          >
-            or Sign up
-          </button>
+          <div className="login-modal__login-or-text">
+            <span>or </span>
+            <button
+              type="button"
+              className="login-modal__signup-btn"
+              onClick={onRegisterClick}
+            >
+              Sign up
+            </button>
+          </div>
         </div>
       </ModalWithForm>
     </div>
