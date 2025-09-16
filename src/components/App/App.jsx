@@ -22,6 +22,7 @@ function App() {
   // later, these will be set based on API calls and user interactions
   const [isLoading, setIsLoading] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
+  const [hasSearched, setHasSearched] = useState(false);
 
   // helper functions to open/close the login modal
   const handleOpenLoginModal = () => setIsLoginModalOpen(true);
@@ -66,6 +67,7 @@ function App() {
 
   const handleSearch = (keyword) => {
     setIsLoading(true); // this will show the preloader
+    setHasSearched(true);
     getNews(keyword) // frontend API function that calls the newsAPI
       .then((articles) => {
         setSearchResults(articles); // stores the fetched articles in local state
@@ -89,7 +91,13 @@ function App() {
       <Routes>
         <Route
           path="/"
-          element={<Main isLoading={isLoading} searchResults={searchResults} />}
+          element={
+            <Main
+              isLoading={isLoading}
+              searchResults={searchResults}
+              hasSearched={hasSearched}
+            />
+          }
         />
         <Route path="/saved-news" element={<SavedNews />} />
       </Routes>
