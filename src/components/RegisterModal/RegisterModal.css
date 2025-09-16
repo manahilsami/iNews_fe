@@ -37,6 +37,7 @@
   color: #b6bcbf;
   background-color: #e6e8eb;
   border: none;
+  cursor: pointer;
 }
 
 .register-modal__register-or-text {
@@ -55,4 +56,5 @@
   border: none;
   background-color: transparent;
   color: #2f71e5;
+  cursor: pointer;
 }
