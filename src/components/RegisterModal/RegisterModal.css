@@ -4,7 +4,7 @@
   font-size: 12px;
   line-height: 100%;
   letter-spacing: 0%;
-  color: #2f71e5;
+  color: #000;
   padding-bottom: 24px;
 }
 .register-modal__input {
@@ -14,13 +14,19 @@
   font-size: 14px;
   line-height: 100%;
   letter-spacing: 0%;
-  color: rgba(0, 0, 0, 0.2);
+  color: #000;
   border-top: 0;
   border-left: 0;
   border-right: 0;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   padding: 8px 0 0 0;
   width: 100%;
+}
+
+/* Placeholder color lighter initially */
+.register-modal__input::placeholder {
+  color: rgba(0, 0, 0, 0.2);
+  opacity: 1;
 }
 
 .register-modal__submit-btn {
@@ -38,6 +44,12 @@
   background-color: #e6e8eb;
   border: none;
   cursor: pointer;
+}
+
+/* Active state: when form is filled and button is enabled */
+.register-modal__submit-btn:enabled {
+  color: #fff;
+  background-color: #2f71e5;
 }
 
 .register-modal__register-or-text {
