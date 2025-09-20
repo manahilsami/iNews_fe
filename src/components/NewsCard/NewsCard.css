@@ -1,3 +1,24 @@
+.news-card__trash {
+  background-image: url("../../images/trash-inactive.png");
+  position: absolute;
+  top: 24px;
+  left: 336px;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  border: none;
+  background-color: white;
+  background-repeat: no-repeat;
+  background-size: cover;
+  cursor: pointer;
+  z-index: 2;
+  border: 8px solid #fff;
+  background-clip: padding-box;
+}
+
+.news-card__trash--active {
+  background-image: url("../../images/trash-active.png");
+}
 .news-card {
   width: 400px;
   height: 576px;
@@ -21,7 +42,7 @@
 }
 
 .news-card__bookmark {
-  background-image: url("../../images/bookmark.png");
+  background-image: url("../../images/bookmark-inactive.png");
   position: absolute;
   top: 24px;
   left: 336px;

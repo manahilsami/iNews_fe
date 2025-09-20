@@ -4,14 +4,14 @@ import logo from "../../images/NewsExplorer.svg";
 import Navigation from "../Navigation/Navigation";
 import { Link } from "react-router-dom";
 
-function Header({ onSignInClick }) {
+function Header({ onSignInClick, user }) {
   return (
     <header className="header">
       <Link to="/">
         <img className="header__logo" alt="NewsExplorer Logo" src={logo} />
       </Link>
       <div className="header__right">
-        <Navigation onSignInClick={onSignInClick} />
+        <Navigation onSignInClick={onSignInClick} user={user} />
       </div>
     </header>
   );

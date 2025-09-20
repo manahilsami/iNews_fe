@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./NewsCardList.css";
 import NewsCard from "../NewsCard/NewsCard";
 
-function NewsCardList({ cards }) {
+function NewsCardList({ cards, isSavedSection, onDelete }) {
   // const [cards] = useState([
   //   {
   //     id: 1,
@@ -58,7 +58,12 @@ function NewsCardList({ cards }) {
       {console.log("Cards passed to NewsCardList:", cards)}
       <div className="news-card-list__grid">
         {cards.slice(0, visibleCount).map((card) => (
-          <NewsCard key={card.link} card={card} />
+          <NewsCard
+            key={card._id || card.link}
+            card={card}
+            isSavedSection={isSavedSection}
+            onDelete={onDelete}
+          />
         ))}
         {/* React requires a key prop when rendering lists to track which items change, are added, or removed. */}
       </div>

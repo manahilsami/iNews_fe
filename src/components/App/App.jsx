@@ -17,29 +17,29 @@ import { set } from "mongoose";
 function App() {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false); // false by default to keep modal closed when app loads
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false); // false by default to keep modal closed when app loads
-
   // dummy state for loading and search results
-  // later, these will be set based on API calls and user interactions
+  // later, these will be set based on API calls and user interactions */
   const [isLoading, setIsLoading] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
   const [hasSearched, setHasSearched] = useState(false);
+  // User state: null if not signed in, object if signed in
+  const [user, setUser] = useState(null);
 
   // helper functions to open/close the login modal
   const handleOpenLoginModal = () => setIsLoginModalOpen(true);
   const handleCloseLoginModal = () => setIsLoginModalOpen(false);
-
   const handleOpenRegisterModal = () => setIsRegisterModalOpen(true);
   const handleCloseRegisterModal = () => setIsRegisterModalOpen(false);
 
-  // Dummy login handler - will close modal on submit
+  // Dummy login handler - replace with real logic
   const handleLoginSubmit = (data) => {
-    // handle login logic here
+    // Example: set user state with name from login form
+    setUser({ name: data.name || "User" });
     setIsLoginModalOpen(false);
   };
-
-  //dummy register handler - will close modal on submit
+  // Dummy register handler - replace with real logic
   const handleRegisterSubmit = (data) => {
-    // handle register logic here
+    setUser({ name: data.name || "User" });
     setIsRegisterModalOpen(false);
   };
 
@@ -84,7 +84,7 @@ function App() {
   return (
     <div>
       <section className="hero">
-        <Header onSignInClick={handleOpenLoginModal} />
+        <Header onSignInClick={handleOpenLoginModal} user={user} />
         <SearchForm onSearch={handleSearch} />
       </section>
 
@@ -99,7 +99,7 @@ function App() {
             />
           }
         />
-        <Route path="/saved-news" element={<SavedNews />} />
+        <Route path="/saved-news" element={<SavedNews user={user} />} />
       </Routes>
 
       <Footer />

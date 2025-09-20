@@ -1,11 +1,18 @@
 import React, { useState } from "react";
 import "./NewsCard.css";
 
-function NewsCard({ card }) {
+function NewsCard({ card, isSavedSection, onDelete }) {
   const [bookmarked, setBookmarked] = useState(false);
+  const [isTrashHovered, setIsTrashHovered] = useState(false);
 
   const handleBookmarkClick = () => {
     setBookmarked((prev) => !prev);
+  };
+
+  const handleDeleteClick = () => {
+    if (onDelete && card._id) {
+      onDelete(card._id);
+    }
   };
 
   return (
@@ -15,7 +22,17 @@ function NewsCard({ card }) {
         src={card?.image || "https://via.placeholder.com/400x272"}
         alt={card?.title || "Article Image"}
       />
-      {bookmarked ? (
+      {isSavedSection ? (
+        <button
+          className={`news-card__trash${
+            isTrashHovered ? " news-card__trash--active" : ""
+          }`}
+          onClick={handleDeleteClick}
+          onMouseEnter={() => setIsTrashHovered(true)}
+          onMouseLeave={() => setIsTrashHovered(false)}
+          aria-label="Delete saved article"
+        ></button>
+      ) : bookmarked ? (
         <button
           className="news-card__bookmark-colored"
           onClick={handleBookmarkClick}
