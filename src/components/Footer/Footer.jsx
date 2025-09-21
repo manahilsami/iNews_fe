@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Footer.css";
 import github from "../../images/github.png";
 import LinkedIn from "../../images/LinkedIn.png";
@@ -12,7 +13,9 @@ function Footer() {
         </p>
       </div>
       <div className="footer__right">
-        <p className="footer__right-home">Home</p>
+        <Link to="/" className="footer__right-home-link">
+          <p className="footer__right-home">Home</p>
+        </Link>
         <p className="footer__right-tt">TripleTen</p>
         <a
           href="https://github.com/manahilsami"

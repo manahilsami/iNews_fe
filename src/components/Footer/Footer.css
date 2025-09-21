@@ -15,6 +15,10 @@
   gap: 40px;
 }
 
+.footer__right-home-link {
+  text-decoration: none;
+}
+
 .footer__right-home {
   font-family: Roboto, sans-serif;
   font-weight: 400;
