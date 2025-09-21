@@ -97,6 +97,11 @@
   cursor: pointer;
 }
 
+.news-card__bookmark:hover,
+.news-card__bookmark:active {
+  background-image: url("../../images/bookmark-active.png");
+}
+
 .news-card__bookmark-colored {
   background-image: url("../../images/bookmark_colored.png");
   position: absolute;
