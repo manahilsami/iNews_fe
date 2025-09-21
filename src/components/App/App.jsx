@@ -36,6 +36,17 @@ function App() {
   const handleOpenRegisterModal = () => setIsRegisterModalOpen(true);
   const handleCloseRegisterModal = () => setIsRegisterModalOpen(false);
 
+  // Logout clears token and user-related state
+  const handleLogout = () => {
+    try {
+      localStorage.removeItem("jwt");
+    } catch (_) {}
+    setUser(null);
+    setCurrentUser(null);
+    setIsLoggedIn(false);
+    setSavedArticles([]);
+  };
+
   const handleRegisterSubmit = ({ email, password, username }) => {
     setRegisterError("");
     // Send both name and username for maximum compatibility; backend accepts either
@@ -196,7 +207,7 @@ function App() {
   return (
     <div>
       <section className="hero">
-        <Header onSignInClick={handleOpenLoginModal} user={user} />
+        <Header onSignInClick={handleOpenLoginModal} user={user} onLogout={handleLogout} />
         {!isSavedNewsRoute && <SearchForm onSearch={handleSearch} />}
       </section>
       {!isSavedNewsRoute && !isLoading && searchResults.length > 0 && (

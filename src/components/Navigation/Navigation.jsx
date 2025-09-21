@@ -2,7 +2,7 @@ import "./Navigation.css";
 import React from "react";
 import { Link } from "react-router-dom";
 
-function Navigation({ onSignInClick, user }) {
+function Navigation({ onSignInClick, user, onLogout }) {
   return (
     <div className="navigation">
       <Link to="/">
@@ -13,7 +13,20 @@ function Navigation({ onSignInClick, user }) {
           <Link to="/saved-news">
             <button className="navigation__saved">Saved articles</button>
           </Link>
-          <button className="navigation__user-btn">{user.username}</button>
+          <div className="navigation__user-wrap">
+            <button className="navigation__user-btn">
+              {user.username || user.name}
+            </button>
+            <button
+              type="button"
+              className="navigation__logout-btn"
+              onClick={onLogout}
+              aria-label="Log out"
+              title="Log out"
+            >
+              ⎋
+            </button>
+          </div>
         </>
       ) : (
         <button className="navigation__signin" onClick={onSignInClick}>

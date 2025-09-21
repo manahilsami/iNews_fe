@@ -38,6 +38,26 @@
   border: none;
 }
 
+.navigation__user-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.navigation__logout-btn {
+  font-family: Roboto, sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: rgba(255, 255, 255, 1);
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 1);
+  border-radius: 100px;
+  height: 36px;
+  padding: 0 12px;
+  cursor: pointer;
+}
+
 .navigation__home {
   font-family: Roboto, sans-serif;
   font-weight: 500;
