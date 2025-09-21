@@ -124,6 +124,33 @@
   background-clip: padding-box;
 }
 
+/* Keyword label shown on saved articles */
+.news-card__keyword {
+  position: absolute;
+  top: 24px;
+  left: 24px; /* 24px from the left edge of the card */
+  max-width: 220px; /* prevent overflow under the trash/bookmark */
+  height: 40px;
+  padding: 8px 22px;
+  background: #ffffff; /* same white box as tooltip */
+  color: #000000;
+  border-radius: 10px; /* same rounded corners */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  font-family: Roboto;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: 0%;
+  text-align: center;
+  z-index: 2; /* above image, below tooltip if overlapping */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .news-card__date {
   font-family: Source Sans Pro;
   font-weight: 400;

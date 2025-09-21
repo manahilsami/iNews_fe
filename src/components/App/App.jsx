@@ -61,6 +61,7 @@ function App() {
       })
       .then((userData) => {
         setCurrentUser(userData);
+        setUser(userData);
         setIsLoggedIn(true);
         handleCloseRegisterModal();
       })

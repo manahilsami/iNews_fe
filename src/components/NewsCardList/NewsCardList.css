@@ -35,10 +35,6 @@
   width: 288px;
   height: 64px;
   background-color: #ffffff;
-  .news-card-list--saved .news-card-list__grid {
-    margin-left: 102px;
-    margin-right: 106px;
-  }
   font-family: Roboto;
   font-weight: 500;
   font-size: 18px;
@@ -50,4 +46,10 @@
   color: #1a1b22;
   display: block;
   margin: 0 auto 80px auto;
+}
+
+/* Saved page specific grid margins (asymmetric) */
+.news-card-list--saved .news-card-list__grid {
+  margin-left: 102px;
+  margin-right: 106px;
 }

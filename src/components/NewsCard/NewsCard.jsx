@@ -50,6 +50,17 @@ function NewsCard({
         src={card?.image || "https://via.placeholder.com/400x272"}
         alt={card?.title || "Article Image"}
       />
+      {isSavedSection && card?.keyword ? (
+        <div
+          className="news-card__keyword"
+          aria-label={`Keyword: ${card.keyword}`}
+          title={card.keyword}
+        >
+          {typeof card.keyword === "string" && card.keyword.length
+            ? card.keyword.charAt(0).toUpperCase() + card.keyword.slice(1)
+            : card.keyword}
+        </div>
+      ) : null}
       {isSavedSection ? (
         <button
           className="news-card__trash"
