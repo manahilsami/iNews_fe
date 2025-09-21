@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import { getNews } from "../../utils/newsApi";
 import Header from "../Header/Header";
 import SearchForm from "../SearchForm/SearchForm";
@@ -13,11 +13,86 @@ import RegisterModal from "../RegisterModal/RegisterModal";
 import SavedNews from "../SavedNews/SavedNews";
 import Main from "../Main/Main";
 import "./App.css";
-import { set } from "mongoose";
-import { signin, checkToken } from "../../utils/auth";
-import { saveArticle, deleteArticle } from "../../utils/api";
+import { signup, signin, checkToken } from "../../utils/auth";
+import { saveArticle, deleteArticle, getSavedArticles } from "../../utils/api";
 
 function App() {
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [searchResults, setSearchResults] = useState([]);
+  const [hasSearched, setHasSearched] = useState(false);
+  const [searchKeyword, setSearchKeyword] = useState("");
+  const [user, setUser] = useState(null);
+  const [currentUser, setCurrentUser] = useState(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [registerError, setRegisterError] = useState("");
+  const { pathname } = useLocation();
+  const isSavedNewsRoute = pathname === "/saved-news";
+  const [savedArticles, setSavedArticles] = useState([]);
+  // helper functions to open/close the login modal
+  const handleOpenLoginModal = () => setIsLoginModalOpen(true);
+  const handleCloseLoginModal = () => setIsLoginModalOpen(false);
+  const handleOpenRegisterModal = () => setIsRegisterModalOpen(true);
+  const handleCloseRegisterModal = () => setIsRegisterModalOpen(false);
+
+  const handleRegisterSubmit = ({ email, password, username }) => {
+    setRegisterError("");
+    // Send both name and username for maximum compatibility; backend accepts either
+    signup({ email, password, username })
+      .then(() => signin({ email, password }))
+      .then((res) => {
+        if (res.token) {
+          localStorage.setItem("jwt", res.token);
+          return checkToken(res.token);
+        }
+        return Promise.reject(new Error("No token received"));
+      })
+      .then((userData) => {
+        setCurrentUser(userData);
+        setIsLoggedIn(true);
+        handleCloseRegisterModal();
+      })
+      .catch((err) => {
+        if (err?.status === 409) {
+          setRegisterError(
+            "A user with this email already exists. Try signing in instead."
+          );
+        } else {
+          setRegisterError(
+            err?.message || "Registration failed. Please try again."
+          );
+        }
+        console.error("Registration/Login failed:", err);
+      });
+  };
+
+  const handleDeleteSavedArticle = (articleId) => {
+    const token = localStorage.getItem("jwt");
+    return deleteArticle(articleId, token)
+      .then(() => {
+        return fetchSavedArticles().then(setSavedArticles);
+      })
+      .catch((err) => {
+        console.error("Failed to delete article:", err);
+        throw err;
+      });
+  };
+  // Function to fetch saved articles for the user
+  const fetchSavedArticles = () => {
+    const token = localStorage.getItem("jwt");
+    return getSavedArticles(token)
+      .then((articles) => {
+        // You can add any additional logic here, e.g., update state or show notification
+        console.log("Fetched saved articles:", articles);
+        return articles;
+      })
+      .catch((err) => {
+        // Handle error (e.g., show error message)
+        console.error("Failed to fetch saved articles:", err);
+        throw err;
+      });
+  };
   const handleBookmarkToggle = (cardLink) => {
     const token = localStorage.getItem("jwt");
     return deleteArticle(cardLink, token)
@@ -32,18 +107,6 @@ function App() {
         throw err;
       });
   };
-  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false); // false by default to keep modal closed when app loads
-  const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false); // false by default to keep modal closed when app loads
-  // dummy state for loading and search results
-  // later, these will be set based on API calls and user interactions */
-  const [isLoading, setIsLoading] = useState(false);
-  const [searchResults, setSearchResults] = useState([]);
-  const [hasSearched, setHasSearched] = useState(false);
-  const [searchKeyword, setSearchKeyword] = useState("");
-  // User state: null if not signed in, object if signed in
-  const [user, setUser] = useState(null);
-  const [currentUser, setCurrentUser] = useState(null);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   // Function to save an article using the API
   const handleSaveArticle = (article, token) => {
@@ -60,11 +123,6 @@ function App() {
         throw err;
       });
   };
-  // helper functions to open/close the login modal
-  const handleOpenLoginModal = () => setIsLoginModalOpen(true);
-  const handleCloseLoginModal = () => setIsLoginModalOpen(false);
-  const handleOpenRegisterModal = () => setIsRegisterModalOpen(true);
-  const handleCloseRegisterModal = () => setIsRegisterModalOpen(false);
 
   // Dummy login handler - replace with real logic
   const handleLoginSubmit = ({ email, password }) => {
@@ -77,19 +135,24 @@ function App() {
         return Promise.reject("No token received");
       })
       .then((userData) => {
+        console.log("Logged in user data:", userData);
         setUser(userData);
         setIsLoggedIn(true);
         handleCloseLoginModal();
+        // Fetch saved articles after login
+        fetchSavedArticles()
+          .then(setSavedArticles)
+          .catch(() => setSavedArticles([]));
       })
       .catch((err) => {
         console.error("Login failed:", err);
       });
   };
-  // Dummy register handler - replace with real logic
-  const handleRegisterSubmit = (data) => {
-    setUser({ name: data.name || "User" });
-    setIsRegisterModalOpen(false);
-  };
+  // // Dummy register handler - replace with real logic
+  // const handleRegisterSubmit = (data) => {
+  //   setUser({ name: data.name });
+  //   setIsRegisterModalOpen(false);
+  // };
 
   //switch models
   const handleSwitchToRegister = () => {
@@ -134,9 +197,9 @@ function App() {
     <div>
       <section className="hero">
         <Header onSignInClick={handleOpenLoginModal} user={user} />
-        <SearchForm onSearch={handleSearch} />
+        {!isSavedNewsRoute && <SearchForm onSearch={handleSearch} />}
       </section>
-      {!isLoading && searchResults.length > 0 && (
+      {!isSavedNewsRoute && !isLoading && searchResults.length > 0 && (
         <NewsCardList
           cards={searchResults}
           onSave={handleSaveArticle}
@@ -155,7 +218,16 @@ function App() {
               />
             }
           />
-          <Route path="/saved-news" element={<SavedNews user={user} />} />
+          <Route
+            path="/saved-news"
+            element={
+              <SavedNews
+                user={user}
+                articles={savedArticles}
+                onDelete={handleDeleteSavedArticle}
+              />
+            }
+          />
         </Routes>
       </div>
 
@@ -172,6 +244,7 @@ function App() {
         onClose={handleCloseRegisterModal}
         onRegisterSubmit={handleRegisterSubmit}
         onLoginClick={handleSwitchToLogin}
+        errorMessage={registerError}
       />
     </div>
   );

@@ -12,7 +12,18 @@ function checkResponse(res) {
   if (res.ok) {
     return res.json();
   }
-  return Promise.reject(`Error:${res.setatus}`);
+  // Try to parse error body for message; fall back to status text
+  return res
+    .json()
+    .catch(() => ({ message: res.statusText }))
+    .then((body) => {
+      const err = new Error(
+        body?.message || res.statusText || "Request failed"
+      );
+      err.status = res.status;
+      err.body = body;
+      throw err;
+    });
 }
 
 function saveArticle(article, token) {

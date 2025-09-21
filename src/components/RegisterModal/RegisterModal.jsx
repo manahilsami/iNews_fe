@@ -7,23 +7,25 @@ export default function RegisterModal({
   onClose,
   onLoginClick,
   onRegisterSubmit,
+  errorMessage,
 }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
+  const [username, setUsername] = useState("");
 
   // Resets form when the modal opens
   useEffect(() => {
     if (isOpen) {
       setEmail("");
       setPassword("");
-      setName("");
+      setUsername("");
     }
   }, [isOpen]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onRegisterSubmit({ email, password, name });
+    // Backend expects `name`; map the UI field `username` to `name` here
+    onRegisterSubmit({ email, password, username });
   };
 
   return (
@@ -66,19 +68,24 @@ export default function RegisterModal({
             id="register-username"
             placeholder="Enter your username"
             required
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
           />
         </label>
+        {errorMessage ? (
+          <p className="register-modal__error" role="alert">
+            {errorMessage}
+          </p>
+        ) : null}
         <div className="register-modal__btn-section">
           <button
             type="submit"
             className={`register-modal__submit-btn ${
-              email && password && name
+              email && password && username
                 ? "register-modal__submit-btn_active"
                 : ""
             }`}
-            disabled={!email || !password || !name}
+            disabled={!email || !password || !username}
           >
             Sign up
           </button>

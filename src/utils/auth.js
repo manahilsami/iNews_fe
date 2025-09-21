@@ -5,13 +5,13 @@ const baseUrl =
     ? "https://api.wtwrms.jumpingcrab.com"
     : "http://localhost:3000";
 
-export const signup = ({ name, email, password }) => {
+export const signup = ({ email, password, username }) => {
   return fetch(`${baseUrl}/signup`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ name, email, password }),
+    body: JSON.stringify({ email, password, username }),
   }).then(checkResponse);
 };
 

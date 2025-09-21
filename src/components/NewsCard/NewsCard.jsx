@@ -37,7 +37,10 @@ function NewsCard({
 
   const handleDeleteClick = () => {
     if (onDelete && card._id) {
-      onDelete(card._id);
+      setIsDeleting(true);
+      Promise.resolve(onDelete(card._id)).finally(() => {
+        setIsDeleting(false);
+      });
     }
   };
 
@@ -57,7 +60,10 @@ function NewsCard({
           onMouseEnter={() => setIsTrashHovered(true)}
           onMouseLeave={() => setIsTrashHovered(false)}
           aria-label="Delete saved article"
-        ></button>
+          disabled={isDeleting}
+        >
+          {isDeleting ? <span className="news-card__trash-spinner" /> : null}
+        </button>
       ) : bookmarked ? (
         <button
           className="news-card__bookmark-colored"

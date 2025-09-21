@@ -60,7 +60,9 @@ function NewsCardList({
 
   return (
     <div className="news-card-list">
-      <p className="news-card-list__title">Search Results</p>
+      {!isSavedSection && (
+        <p className="news-card-list__title">Search Results</p>
+      )}
       {/* {console.log("Cards passed to NewsCardList:", cards)} */}
       <div className="news-card-list__grid">
         {cards.slice(0, visibleCount).map((card) => (
