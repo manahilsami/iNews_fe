@@ -13,7 +13,6 @@ function NewsCard({
   const [isDeleting, setIsDeleting] = useState(false);
   // Accept onSave as a prop
   const token = localStorage.getItem("jwt");
-  const [isTrashHovered, setIsTrashHovered] = useState(false);
 
   const handleBookmarkClick = () => {
     setBookmarked((prev) => {
@@ -53,12 +52,8 @@ function NewsCard({
       />
       {isSavedSection ? (
         <button
-          className={`news-card__trash${
-            isTrashHovered ? "news-card__trash--active" : ""
-          }`}
+          className="news-card__trash"
           onClick={handleDeleteClick}
-          onMouseEnter={() => setIsTrashHovered(true)}
-          onMouseLeave={() => setIsTrashHovered(false)}
           aria-label="Delete saved article"
           disabled={isDeleting}
         >

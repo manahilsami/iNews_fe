@@ -16,8 +16,49 @@
   background-clip: padding-box;
 }
 
-.news-card__trash--active {
+.news-card__trash:hover,
+.news-card__trash:active {
   background-image: url("../../images/trash-active.png");
+}
+
+/* Tooltip for remove action */
+.news-card__trash::after {
+  content: "Remove from saved";
+  height: 40px;
+  width: 159px;
+  position: absolute;
+  top: 50%;
+  right: 48px; /* show to the left of the icon */
+  transform: translateY(-50%) translateX(-4px);
+  white-space: nowrap;
+  background: #ffffff;
+  color: #1a1b22;
+  border-radius: 8px;
+  padding: 6px 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  font-family: Roboto;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-align: center;
+  vertical-align: middle;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none; /* don't block clicks */
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 3;
+  display: flex;
+  align-items: center; /* vertical center */
+  justify-content: center; /* horizontal center */
+  box-sizing: border-box;
+}
+
+.news-card__trash:hover::after,
+.news-card__trash:active::after {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(-50%) translateX(0);
 }
 .news-card {
   width: 400px;
