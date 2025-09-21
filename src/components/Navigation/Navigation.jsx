@@ -1,5 +1,6 @@
 import "./Navigation.css";
 import React from "react";
+import logoutIcon from "../../images/logout.svg";
 import { Link } from "react-router-dom";
 
 function Navigation({ onSignInClick, user, onLogout }) {
@@ -14,18 +15,20 @@ function Navigation({ onSignInClick, user, onLogout }) {
             <button className="navigation__saved">Saved articles</button>
           </Link>
           <div className="navigation__user-wrap">
-            <button className="navigation__user-btn">
-              {user.username || user.name}
-            </button>
-            <button
-              type="button"
-              className="navigation__logout-btn"
-              onClick={onLogout}
-              aria-label="Log out"
-              title="Log out"
-            >
-              ⎋
-            </button>
+            <div className="navigation__user-btn">
+              <span className="navigation__username">
+                {user.username || user.name}
+              </span>
+              <img
+                src={logoutIcon}
+                alt="Log out"
+                className="navigation__logout-icon"
+                width={24}
+                height={24}
+                onClick={onLogout}
+                role="button"
+              />
+            </div>
           </div>
         </>
       ) : (

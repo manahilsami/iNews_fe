@@ -20,15 +20,15 @@
   color: rgba(255, 255, 255, 1);
   border: 1px solid rgba(255, 255, 255, 1);
   border-radius: 100px;
-  width: 176px;
+  min-width: auto; /* let pill size to its content */
   height: 48px;
-  padding: 0;
+  padding: 0 10px 0 16px; /* right padding 10px, left 16px */
   margin: 0;
-  display: flex;
+  display: inline-flex; /* pill container */
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  gap: 15px; /* 15px between name and icon */
   background: transparent;
-  cursor: pointer;
 }
 .navigation {
   display: flex;
@@ -41,7 +41,7 @@
 .navigation__user-wrap {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 0; /* icon moved inside pill */
 }
 
 .navigation__logout-btn {
@@ -56,6 +56,19 @@
   height: 36px;
   padding: 0 12px;
   cursor: pointer;
+}
+
+/* New: logout icon next to username */
+.navigation__logout-icon {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  display: inline-block;
+}
+
+/* When header is white, ensure icon reads as dark */
+.header--saved .navigation__logout-icon {
+  filter: none; /* rely on the asset color (expected black) */
 }
 
 .navigation__home {
