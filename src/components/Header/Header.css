@@ -10,6 +10,12 @@
   border-bottom: 0.25px solid rgba(255, 255, 255, 0.3);
 }
 
+/* Saved-news: white header background and darker border */
+.header--saved {
+  background: #ffffff;
+  border-bottom: 0.25px solid rgba(26, 27, 34, 0.3);
+}
+
 .header__logo {
   width: 200px;
   height: 24px;

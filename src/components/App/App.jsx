@@ -207,11 +207,12 @@ function App() {
 
   return (
     <div>
-      <section className="hero">
+      <section className={isSavedNewsRoute ? "" : "hero"}>
         <Header
           onSignInClick={handleOpenLoginModal}
           user={user}
           onLogout={handleLogout}
+          isSaved={isSavedNewsRoute}
         />
         {!isSavedNewsRoute && <SearchForm onSearch={handleSearch} />}
       </section>

@@ -91,3 +91,16 @@
   background: transparent;
   cursor: pointer;
 }
+
+/* When header is white on saved-news, switch nav colors to dark */
+.header--saved .navigation__home,
+.header--saved .navigation__saved {
+  color: #1a1b22;
+}
+
+.header--saved .navigation__user-btn,
+.header--saved .navigation__signin,
+.header--saved .navigation__logout-btn {
+  color: #1a1b22;
+  border-color: #1a1b22;
+}
