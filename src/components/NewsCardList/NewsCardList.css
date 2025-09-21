@@ -53,3 +53,25 @@
   margin-left: 102px;
   margin-right: 106px;
 }
+
+/* Tablet: 2 columns, reduced side margins */
+@media (max-width: 1024px) {
+  .news-card-list__grid {
+    grid-template-columns: repeat(2, 1fr);
+    margin-left: 40px;
+    margin-right: 40px;
+  }
+  .news-card-list--saved .news-card-list__grid {
+    margin-left: 40px;
+    margin-right: 40px;
+  }
+}
+
+/* Narrow screens: single column, centered */
+@media (max-width: 768px) {
+  .news-card-list__grid {
+    grid-template-columns: 1fr;
+    margin-left: 24px;
+    margin-right: 24px;
+  }
+}

@@ -1,15 +1,12 @@
 import "./About.css";
 import React from "react";
+import manahil from "../../images/manahil.jpg";
 
 function About() {
   return (
     <div className="about">
       <div className="about__left">
-        <img
-          src="https://static.vecteezy.com/system/resources/thumbnails/042/332/098/small_2x/default-avatar-profile-icon-grey-photo-placeholder-female-no-photo-images-for-unfilled-user-profile-greyscale-illustration-for-socail-media-web-vector.jpg"
-          alt="Author Image"
-          className="about__left-image"
-        />
+        <img src={manahil} alt="Author Image" className="about__left-image" />
       </div>
       <div className="about__right">
         <p className="about__right-title">About the author</p>

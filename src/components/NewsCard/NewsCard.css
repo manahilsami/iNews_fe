@@ -2,7 +2,7 @@
   background-image: url("../../images/trash-inactive.png");
   position: absolute;
   top: 24px;
-  left: 336px;
+  right: 24px;
   width: 40px;
   height: 40px;
   border-radius: 8px;
@@ -61,7 +61,8 @@
   transform: translateY(-50%) translateX(0);
 }
 .news-card {
-  width: 400px;
+  width: 100%;
+  max-width: 400px;
   height: 576px;
   display: flex;
   flex-direction: column;
@@ -72,7 +73,7 @@
 }
 
 .news-card__image {
-  width: 400px;
+  width: 100%;
   height: 272px;
   object-fit: cover;
   z-index: 1; /* Optional, check if needed when overlapping with bookmarks */
@@ -86,7 +87,7 @@
   background-image: url("../../images/bookmark-inactive.png");
   position: absolute;
   top: 24px;
-  left: 336px;
+  right: 24px;
   width: 40px;
   height: 40px;
   border-radius: 8px;
@@ -106,7 +107,7 @@
   background-image: url("../../images/bookmark_colored.png");
   position: absolute;
   top: 24px;
-  left: 336px;
+  right: 24px;
   width: 40px;
   height: 40px;
   border-radius: 8px;
@@ -189,11 +190,18 @@
   line-height: 22px;
   letter-spacing: 0px;
   color: #1a1b22;
-  width: 352px;
+  width: calc(100% - 48px); /* 24px side paddings */
   height: 110px;
   margin: 0 24px 12px 24px;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+/* Tablet adjustments (optional fine-tuning) */
+@media (max-width: 1024px) {
+  .news-card {
+    height: auto; /* let height grow with content if needed */
+  }
 }
 
 .news-card__source {
