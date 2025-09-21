@@ -207,7 +207,11 @@ function App() {
   return (
     <div>
       <section className="hero">
-        <Header onSignInClick={handleOpenLoginModal} user={user} onLogout={handleLogout} />
+        <Header
+          onSignInClick={handleOpenLoginModal}
+          user={user}
+          onLogout={handleLogout}
+        />
         {!isSavedNewsRoute && <SearchForm onSearch={handleSearch} />}
       </section>
       {!isSavedNewsRoute && !isLoading && searchResults.length > 0 && (
