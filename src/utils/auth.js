@@ -3,7 +3,7 @@ import { checkResponse } from "./api.js";
 const baseUrl =
   process.env.NODE_ENV === "production"
     ? "https://api.wtwrms.jumpingcrab.com"
-    : "http://localhost:3001";
+    : "http://localhost:3000";
 
 export const signup = ({ name, email, password }) => {
   return fetch(`${baseUrl}/signup`, {

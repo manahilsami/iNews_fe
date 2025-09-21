@@ -2,7 +2,13 @@ import React, { useState } from "react";
 import "./NewsCardList.css";
 import NewsCard from "../NewsCard/NewsCard";
 
-function NewsCardList({ cards, isSavedSection, onDelete }) {
+function NewsCardList({
+  cards,
+  isSavedSection,
+  onDelete,
+  onSave,
+  onBookmarkToggle,
+}) {
   // const [cards] = useState([
   //   {
   //     id: 1,
@@ -55,7 +61,7 @@ function NewsCardList({ cards, isSavedSection, onDelete }) {
   return (
     <div className="news-card-list">
       <p className="news-card-list__title">Search Results</p>
-      {console.log("Cards passed to NewsCardList:", cards)}
+      {/* {console.log("Cards passed to NewsCardList:", cards)} */}
       <div className="news-card-list__grid">
         {cards.slice(0, visibleCount).map((card) => (
           <NewsCard
@@ -63,9 +69,10 @@ function NewsCardList({ cards, isSavedSection, onDelete }) {
             card={card}
             isSavedSection={isSavedSection}
             onDelete={onDelete}
+            onSave={onSave}
+            onBookmarkToggle={onBookmarkToggle}
           />
         ))}
-        {/* React requires a key prop when rendering lists to track which items change, are added, or removed. */}
       </div>
       {visibleCount < cards.length && (
         <button className="news-card-list__show-more" onClick={handleShowMore}>

@@ -3,6 +3,11 @@ const newsApiBaseUrl =
     ? "https://nomoreparties.co/news/v2/everything"
     : "https://newsapi.org/v2/everything";
 
+const baseUrl =
+  process.env.NODE_ENV === "production"
+    ? "https://api.wtwrms.jumpingcrab.com"
+    : "http://localhost:3000";
+
 function checkResponse(res) {
   if (res.ok) {
     return res.json();
@@ -23,6 +28,7 @@ function saveArticle(article, token) {
 
 function getSavedArticles(token) {
   return fetch(`${baseUrl}/articles`, {
+    method: "GET",
     headers: {
       authorization: `Bearer ${token}`,
     },

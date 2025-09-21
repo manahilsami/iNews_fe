@@ -1,12 +1,38 @@
 import React, { useState } from "react";
 import "./NewsCard.css";
 
-function NewsCard({ card, isSavedSection, onDelete }) {
+function NewsCard({
+  card,
+  isSavedSection,
+  onDelete,
+  onSave,
+  onBookmarkToggle,
+}) {
   const [bookmarked, setBookmarked] = useState(false);
+  const [selectedCardId, setSelectedCardId] = useState(null);
+  const [isDeleting, setIsDeleting] = useState(false);
+  // Accept onSave as a prop
+  const token = localStorage.getItem("jwt");
   const [isTrashHovered, setIsTrashHovered] = useState(false);
 
   const handleBookmarkClick = () => {
-    setBookmarked((prev) => !prev);
+    setBookmarked((prev) => {
+      const newState = !prev;
+      if (!isSavedSection && typeof onSave === "function" && newState) {
+        onSave(card, token);
+      }
+      // If unchecking, call onBookmarkToggle with card id and disable button
+      if (!newState && typeof onBookmarkToggle === "function") {
+        setSelectedCardId(card._id || card.id || card.link);
+        setIsDeleting(true);
+        Promise.resolve(
+          onBookmarkToggle(card._id || card.id || card.link)
+        ).finally(() => {
+          setIsDeleting(false);
+        });
+      }
+      return newState;
+    });
   };
 
   const handleDeleteClick = () => {
@@ -25,7 +51,7 @@ function NewsCard({ card, isSavedSection, onDelete }) {
       {isSavedSection ? (
         <button
           className={`news-card__trash${
-            isTrashHovered ? " news-card__trash--active" : ""
+            isTrashHovered ? "news-card__trash--active" : ""
           }`}
           onClick={handleDeleteClick}
           onMouseEnter={() => setIsTrashHovered(true)}
@@ -37,12 +63,14 @@ function NewsCard({ card, isSavedSection, onDelete }) {
           className="news-card__bookmark-colored"
           onClick={handleBookmarkClick}
           aria-label="Remove bookmark"
+          disabled={isDeleting}
         ></button>
       ) : (
         <button
           className="news-card__bookmark"
           onClick={handleBookmarkClick}
           aria-label="Add bookmark"
+          disabled={isDeleting}
         ></button>
       )}
       <div className="news-card__content">

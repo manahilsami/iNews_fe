@@ -9,11 +9,9 @@ function Main({ isLoading, searchResults, hasSearched }) {
   return (
     <main className="main">
       {/* loader */}
-      {isLoading && <Preloader />} {/* shows preloader while data is loading */}
+      {isLoading && <Preloader />}
       {/* stops loading & shows search results if they exist */}
-      {!isLoading && searchResults.length > 0 && (
-        <NewsCardList cards={searchResults} />
-      )}
+      {/* NewsCardList removed from Main. Now handled in App.jsx */}
       {/* loading stops and shows msg if no results found, and user has searched */}
       {!isLoading && hasSearched && searchResults.length === 0 && (
         <div className="main__no-results">
