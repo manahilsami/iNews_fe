@@ -16,7 +16,14 @@ function Footer() {
         <Link to="/" className="footer__right-home-link">
           <p className="footer__right-home">Home</p>
         </Link>
-        <p className="footer__right-tt">TripleTen</p>
+        <Link
+          to="https://tripleten.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="footer__right-tt"
+        >
+          TripleTen
+        </Link>
         <a
           href="https://github.com/manahilsami"
           target="_blank"
