@@ -59,7 +59,11 @@ function NewsCardList({
   if (!cards || cards.length === 0) return null; // nothing to render
 
   return (
-    <div className="news-card-list">
+    <div
+      className={`news-card-list${
+        isSavedSection ? " news-card-list--saved" : ""
+      }`}
+    >
       {!isSavedSection && (
         <p className="news-card-list__title">Search Results</p>
       )}
