@@ -73,3 +73,11 @@
   color: #2f71e5;
   cursor: pointer;
 }
+
+/* Tablet (iPad portrait 768x1024): constrain Sign In modal size */
+@media screen and (width: 768px) and (height: 1024px) {
+  .login-modal .modal__content {
+    width: 430px;
+    height: 380px;
+  }
+}
