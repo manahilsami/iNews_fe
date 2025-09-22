@@ -5,8 +5,8 @@ const newsApiBaseUrl =
 
 const baseUrl =
   process.env.NODE_ENV === "production"
-    ? "https://api.wtwrms.jumpingcrab.com"
-    : "http://localhost:3000";
+    ? "https://api.newsexplorer.fpr.net"
+    : "http://localhost:3002";
 
 function checkResponse(res) {
   if (res.ok) {

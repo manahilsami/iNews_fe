@@ -23,5 +23,7 @@
     "eslint-plugin-react-hooks": "^4.6.2",
     "eslint-plugin-react-refresh": "^0.4.7",
     "vite": "^7.1.4"
-  }
+  },
+  "homepage": "http://newsexplorer.fpr.net",
+  "deploy": "npm run build && scp -r ./dist/* manahil_s123@newsexplorer.fpr.net:/home/manahil_s123/final-project-frontend"
 }
