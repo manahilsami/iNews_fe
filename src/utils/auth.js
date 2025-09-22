@@ -2,7 +2,7 @@ import { checkResponse } from "./api.js";
 
 const baseUrl =
   process.env.NODE_ENV === "production"
-    ? "https://api.wtwrms.jumpingcrab.com"
+    ? "https://api.newsexplorer.fpr.net"
     : "http://localhost:3000";
 
 export const signup = ({ email, password, username }) => {
