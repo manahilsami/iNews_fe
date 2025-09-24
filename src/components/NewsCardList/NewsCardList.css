@@ -53,3 +53,39 @@
   margin-left: 102px;
   margin-right: 106px;
 }
+
+/* Tablet responsive design */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .news-card-list__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-bottom: 48px;
+  }
+  
+  .news-card-list__title {
+    font-size: 32px;
+    line-height: 38px;
+    margin-bottom: 48px;
+    padding-left: 40px;
+    padding-top: 60px;
+  }
+  
+  .news-card-list__show-more {
+    width: 240px;
+    height: 56px;
+    font-size: 16px;
+    margin: 0 auto 60px auto;
+  }
+  
+  /* Saved page specific grid margins for tablet */
+  .news-card-list--saved .news-card-list__grid {
+    margin-left: 40px;
+    margin-right: 40px;
+  }
+  
+  .news-card-list--saved {
+    padding-top: 48px;
+  }
+}

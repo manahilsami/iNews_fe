@@ -117,3 +117,28 @@
   color: #1a1b22;
   border-color: #1a1b22;
 }
+
+/* Tablet responsive design */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .navigation {
+    gap: 24px;
+  }
+  
+  .navigation__signin {
+    width: 150px;
+    height: 44px;
+    font-size: 16px;
+  }
+  
+  .navigation__user-btn {
+    height: 44px;
+    font-size: 16px;
+    gap: 12px;
+    padding: 0 8px 0 12px;
+  }
+  
+  .navigation__saved,
+  .navigation__home {
+    font-size: 16px;
+  }
+}

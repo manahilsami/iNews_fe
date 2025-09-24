@@ -27,3 +27,14 @@
   align-items: center;
   gap: 42px;
 }
+
+/* Tablet responsive design */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .header {
+    padding: 0 40px;
+  }
+  
+  .header__right {
+    gap: 24px;
+  }
+}

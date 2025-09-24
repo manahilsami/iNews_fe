@@ -74,10 +74,29 @@
   cursor: pointer;
 }
 
-/* Tablet (iPad portrait 768x1024): constrain Sign In modal size */
-@media screen and (width: 768px) and (height: 1024px) {
-  .login-modal .modal__content {
-    width: 430px;
-    height: 380px;
+/* Tablet responsive design */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .login-modal__submit-btn {
+    width: 320px;
+    height: 56px;
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .login-modal__btn-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .login-modal__submit-btn {
+    width: 288px;
+    text-align: center;
+  }
+
+  .login-modal__login-or-text {
+    text-align: center;
+    padding-bottom: 240px;
   }
 }
