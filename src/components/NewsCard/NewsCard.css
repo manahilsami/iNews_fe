@@ -195,7 +195,7 @@
   color: #1a1b22;
   width: 352px;
   height: 110px;
-  margin: 0 24px 12px 24px;
+  margin: 0 24px 0 24px;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -208,7 +208,7 @@
   letter-spacing: 0.4px;
   text-transform: uppercase;
   color: #b6bcbf;
-  margin: 12px 24px 16px 24px;
+  margin: 18px 24px 24px 24px;
   align-self: flex-start;
 }
 

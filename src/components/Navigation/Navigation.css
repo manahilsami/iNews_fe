@@ -9,6 +9,7 @@
   background: transparent;
   cursor: pointer;
   padding: 0 16px;
+  position: relative; /* needed so active underline anchors to this element */
 }
 
 .navigation__user-btn {
@@ -36,6 +37,34 @@
   gap: 42px;
   background: transparent;
   border: none;
+}
+
+/* Active underline: default (home/dark header) is white */
+.navigation__home.navigation__active::after,
+.navigation__saved.navigation__active::after {
+  content: "";
+  position: absolute;
+  left: -8px;
+  right: auto;
+  width: 68px; /* underline matches the button width (text + padding) */
+  bottom: -30px; /* align near header bottom border */
+  height: 4px;
+  background: #ffffff;
+  border-radius: 3px;
+}
+
+/* On saved header (white), underline should be dark */
+.header--saved .navigation__home.navigation__active::after,
+.header--saved .navigation__saved.navigation__active::after {
+  content: "";
+  position: absolute;
+  left: -15px;
+  right: auto;
+  width: 178px; /* underline matches the button width (text + padding) */
+  bottom: -30px; /* align near header bottom border */
+  height: 4px;
+  background: #000000;
+  border-radius: 3px;
 }
 
 .navigation__user-wrap {
@@ -83,6 +112,7 @@
   background: transparent;
   border: none;
   cursor: pointer;
+  position: relative; /* for underline */
 }
 
 .navigation__signin {
