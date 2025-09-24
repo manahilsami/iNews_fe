@@ -1,0 +1,31 @@
+.modal__content_success {
+  width: 430px;
+  height: 182px;
+  padding: 43px 79px 51px 36px; /* top right bottom left */
+  box-sizing: border-box;
+}
+
+.success-modal__title {
+  margin: 0;
+  font-family: Roboto;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #000000;
+}
+
+.success-modal__signin-btn {
+  margin-top: 14px; /* vertical gap between title and button */
+  border: none;
+  background: transparent;
+  padding: 0;
+  font-family: Inter;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #2f71e5;
+  cursor: pointer;
+  text-align: left; /* start at left */
+}

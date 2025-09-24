@@ -34,26 +34,3 @@
   color: #6c707a;
   margin-bottom: 80px;
 }
-
-/* Tablet responsive design */
-@media (min-width: 768px) and (max-width: 1023px) {
-  .main__no-results-icon {
-    width: 70px;
-    height: 70px;
-    margin-top: 64px;
-    margin-bottom: 24px;
-  }
-  
-  .main__no-results-title {
-    font-size: 22px;
-    line-height: 26px;
-    margin-bottom: 12px;
-  }
-  
-  .main__no-results-subtitle {
-    font-size: 16px;
-    line-height: 22px;
-    margin-bottom: 60px;
-    padding: 0 40px;
-  }
-}

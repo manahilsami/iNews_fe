@@ -1,9 +1,12 @@
 import "./Navigation.css";
 import React from "react";
-import logoutIcon from "../../images/logout.svg";
+import logoutIconDark from "../../images/logout.svg";
+import logoutIconWhite from "../../images/logout-white.png";
 import { Link } from "react-router-dom";
 
-function Navigation({ onSignInClick, user, onLogout }) {
+function Navigation({ onSignInClick, user, onLogout, isSaved }) {
+  // On home (isSaved=false, dark background), use white icon; on saved (isSaved=true, light background), use dark icon
+  const logoutIcon = isSaved ? logoutIconDark : logoutIconWhite;
   return (
     <div className="navigation">
       <Link to="/">

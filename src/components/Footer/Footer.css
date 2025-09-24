@@ -56,3 +56,78 @@
   letter-spacing: 0px;
   color: rgba(182, 188, 191, 1);
 }
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .footer {
+    padding: 0 40px 0 40px;
+  }
+
+  .footer__left-copyright {
+    width: 300px;
+    height: 22px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .footer {
+    height: auto;
+    padding: 0 16px 0;
+    display: grid;
+    grid-template-rows: auto auto; /* links row then copyright row */
+    grid-template-columns: 1fr; /* single column grid container */
+    row-gap: 16px;
+  }
+
+  .footer__right {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    column-gap: 16px;
+    align-items: center;
+    grid-row: 1;
+  }
+
+  .footer__right-home {
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  .footer__right-home-link {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+  }
+  .footer__right-tt {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+    display: inline-block;
+    margin-top: -18px;
+  }
+
+  .footer__right-github-link {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    justify-self: end;
+  }
+  .footer__right-linkedin-link {
+    grid-column: 3 / 4;
+    grid-row: 1 / 2;
+    justify-self: end;
+  }
+
+  .footer__left {
+    width: 100%;
+    grid-row: 2;
+    justify-self: stretch;
+  }
+
+  .footer__left-copyright {
+    font-size: 16px;
+    line-height: 22px;
+    color: rgba(182, 188, 191, 1);
+    text-align: center;
+    width: 288px;
+    height: 22px;
+    margin-top: 22px;
+    margin-bottom: 22px;
+  }
+}

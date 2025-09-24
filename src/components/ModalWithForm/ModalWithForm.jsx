@@ -1,7 +1,14 @@
 import React, { useState, useEffect } from "react";
 import "./ModalWithForm.css";
 
-function ModalWithForm({ title, isOpen, onClose, onSubmit, children }) {
+function ModalWithForm({
+  title,
+  isOpen,
+  onClose,
+  onSubmit,
+  children,
+  noValidate = false,
+}) {
   useEffect(() => {
     const handleEscClose = (e) => {
       if (e.key === "Escape") {
@@ -27,7 +34,11 @@ function ModalWithForm({ title, isOpen, onClose, onSubmit, children }) {
         {/* prevents closing when clicking inside modal */}
         <button className="modal__close" type="button" onClick={onClose} />
         <h2 className="modal__title">{title}</h2>
-        <form className="modal__form" onSubmit={onSubmit}>
+        <form
+          className="modal__form"
+          onSubmit={onSubmit}
+          noValidate={noValidate}
+        >
           {children}
         </form>
       </div>

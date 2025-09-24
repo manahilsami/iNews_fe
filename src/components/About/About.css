@@ -6,7 +6,7 @@
   align-items: flex-start;
   justify-content: center;
   gap: 56px;
-  padding: 131px 0 0 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
@@ -14,7 +14,7 @@
   display: flex;
   justify-content: flex-start;
   position: relative;
-  top: -51px;
+  top: 0;
 }
 
 .about__right {
@@ -31,7 +31,7 @@
   line-height: 46px;
   letter-spacing: 0px;
   color: rgba(26, 27, 34, 1);
-  margin: 0 0 24px 0;
+  margin: 131px 0 24px 0;
 }
 
 .about__right-description {
@@ -54,4 +54,83 @@
   height: 464px;
   border-radius: 1000px;
   object-fit: cover;
+  margin-left: 104px;
+  margin-top: 80px;
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .about {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 32px; /* slightly tighter on tablet */
+    height: auto; /* allow content to size naturally */
+    padding-top: 0; /* we'll control spacing via element margins */
+  }
+
+  .about__left {
+    top: 0;
+  }
+
+  .about__left-image {
+    width: 232px;
+    height: 232px;
+    margin: 61px 0 0 40px;
+  }
+
+  .about__right-title {
+    font-size: 30px;
+    line-height: 40px;
+    margin-top: 40px;
+    margin-bottom: 16px;
+  }
+
+  .about__right {
+    align-items: flex-start;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .about {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    height: auto;
+    padding: 32px 24px 24px;
+    box-sizing: border-box;
+  }
+
+  .about__left {
+    width: 100%;
+  }
+
+  .about__left-image {
+    width: 272px;
+    height: 272px;
+    border-radius: 1000px;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .about__right {
+    width: 100%;
+    align-items: flex-start;
+  }
+
+  .about__right-title {
+    font-size: 30px;
+    line-height: 40px;
+    margin: 16px 0;
+    width: 100%;
+  }
+
+  .about__right-description {
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  .about__right-description:not(:last-child) {
+    margin-bottom: 16px;
+  }
 }

@@ -65,7 +65,7 @@ function NewsCardList({
       }`}
     >
       {!isSavedSection && (
-        <p className="news-card-list__title">Search Results</p>
+        <p className="news-card-list__title">Search results</p>
       )}
       {/* {console.log("Cards passed to NewsCardList:", cards)} */}
       <div className="news-card-list__grid">
@@ -82,7 +82,7 @@ function NewsCardList({
       </div>
       {visibleCount < cards.length && (
         <button className="news-card-list__show-more" onClick={handleShowMore}>
-          Show More
+          Show more
         </button>
       )}
     </div>

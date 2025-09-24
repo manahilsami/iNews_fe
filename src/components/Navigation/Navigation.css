@@ -118,25 +118,27 @@
   border-color: #1a1b22;
 }
 
-/* Tablet responsive design */
 @media (min-width: 768px) and (max-width: 1023px) {
   .navigation {
-    gap: 24px;
+    gap: 16px;
   }
-  
+
   .navigation__signin {
-    width: 150px;
-    height: 44px;
+    width: 152px;
+    height: 40px;
     font-size: 16px;
+    padding-top: 14px;
+    padding-bottom: 12px;
   }
-  
+
   .navigation__user-btn {
-    height: 44px;
+    height: auto; /* override base height for flexible vertical sizing */
+    width: auto; /* let pill expand for longer usernames */
     font-size: 16px;
-    gap: 12px;
-    padding: 0 8px 0 12px;
+    gap: 13px;
+    padding: 12px 8px 12px 12px; /* keep top/bottom 12px, tighter right */
   }
-  
+
   .navigation__saved,
   .navigation__home {
     font-size: 16px;

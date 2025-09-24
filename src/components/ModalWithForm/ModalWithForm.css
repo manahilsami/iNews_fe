@@ -11,8 +11,6 @@
   visibility: hidden;
   z-index: 1000;
   padding: 34px 36px;
-  /* width: 430px;
-  height: 380px; */
 }
 
 .modal_opened {
@@ -34,7 +32,8 @@
 .modal__content {
   background-color: #fff;
   position: relative;
-  padding: 34px 36px;
+  /* Top: 34px, Sides: 36px, Bottom: 28px to match spec */
+  padding: 34px 36px 28px 36px;
   width: 430px;
   box-sizing: border-box;
   border-radius: 16px;
@@ -65,8 +64,8 @@
 @media screen and (max-width: 767px) {
   .modal__content {
     width: 320px;
-    height: 560;
-    padding: 16px 16px auto 16px;
+    height: 560px;
+    padding: 16px; /* uniform padding on mobile */
   }
 
   .modal__close {
@@ -77,9 +76,29 @@
   }
 }
 
-@media screen and (min-width: 768px) {
+@media (min-width: 768px) and (max-width: 1023px) {
+  /* Keep the overlay full-screen; position content box at exact offsets */
+  .modal {
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 0; /* ensure offsets are exact from viewport */
+  }
+
   .modal__content {
     width: 430px;
-    height: 380px;
+    top: 207px;
+    left: 169px;
+    padding: 34px 36px 28px 36px; /* bottom = 28px to match required spacing */
+    display: flex;
+    flex-direction: column; /* allow pushing footer area to bottom */
+  }
+
+  .modal__form {
+    padding: 0;
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    flex: 1; /* consume available vertical space so buttons can sit at bottom */
+    justify-content: space-between; /* push last row to bottom, remove internal bottom gap */
   }
 }

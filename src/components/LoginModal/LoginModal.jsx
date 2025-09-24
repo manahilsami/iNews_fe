@@ -10,17 +10,27 @@ export default function LoginModal({
 }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [emailError, setEmailError] = useState("");
 
   // Resets form fields when the modal is opened
   useEffect(() => {
     if (isOpen) {
       setEmail("");
       setPassword("");
+      setEmailError("");
     }
   }, [isOpen]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    // Basic email format validation
+    const emailPattern =
+      /^(?:[a-zA-Z0-9_'^&\/+{}=!?$%#`~.-]+)@(?:[a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}$/;
+    if (!emailPattern.test(email)) {
+      setEmailError("Invalid email address");
+      return;
+    }
+    setEmailError("");
     onLoginSubmit({ email, password });
   };
 
@@ -30,6 +40,7 @@ export default function LoginModal({
         isOpen={isOpen}
         onClose={onClose}
         onSubmit={handleSubmit}
+        noValidate
         title="Sign in"
       >
         <label htmlFor="login-email" className="login-modal__label">
@@ -43,6 +54,11 @@ export default function LoginModal({
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
+          {emailError && (
+            <p className="login-modal__error" role="alert">
+              {emailError}
+            </p>
+          )}
         </label>
         <label htmlFor="login-password" className="login-modal__label">
           Password

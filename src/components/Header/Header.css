@@ -19,7 +19,8 @@
 .header__logo {
   width: 200px;
   height: 24px;
-  margin: 30px 0 26px 0;
+  /* margin: 30px 0 26px 0; */
+  padding-left: 40px;
 }
 
 .header__right {
@@ -28,13 +29,58 @@
   gap: 42px;
 }
 
-/* Tablet responsive design */
+.header__menu {
+  display: none; /* hidden by default, shown on mobile */
+  width: 24px;
+  height: 24px;
+  border: none;
+  background: transparent;
+  background-image: url("../../images/menu.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
 @media (min-width: 768px) and (max-width: 1023px) {
   .header {
+    height: 66px;
     padding: 0 40px;
   }
-  
+
+  .header__logo {
+    padding-left: 0;
+    margin: 22px 0 18px 0;
+    object-fit: contain;
+    object-position: left center;
+  }
+
   .header__right {
-    gap: 24px;
+    gap: 16px;
+  }
+}
+
+@media screen and (max-width: 627px) {
+  .header {
+    height: 56px;
+    padding: 0;
+  }
+
+  .header__logo {
+    padding-top: 5px;
+    padding-left: 16px;
+    margin: 0;
+    width: 117px;
+    height: 24px;
+    object-fit: contain;
+    object-position: left center;
+  }
+
+  .header__menu {
+    display: inline-block;
+    margin-right: 16px;
+  }
+
+  .header__right {
+    display: none; /* hide nav on mobile, menu will represent it */
   }
 }

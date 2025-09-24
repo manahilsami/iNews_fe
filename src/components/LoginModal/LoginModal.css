@@ -46,6 +46,8 @@
   background-color: #e6e8eb;
   border: none;
   cursor: pointer;
+  display: block; /* allow centering via auto margins */
+  margin: 0 auto;
 }
 
 /* Active state: when form is filled and button is enabled */
@@ -64,7 +66,10 @@
   line-height: 100%;
   letter-spacing: 0%;
   text-align: center;
-  vertical-align: middle;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 0; /* tablet uses modal bottom padding for spacing */
 }
 
 .login-modal__signup-btn {
@@ -74,12 +79,39 @@
   cursor: pointer;
 }
 
+/* Email error under the email input */
+.login-modal__error {
+  font-family: Inter;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #ff0000;
+  margin-top: 8px; /* small gap from input underline */
+}
+
 /* Tablet responsive design */
 @media (min-width: 768px) and (max-width: 1023px) {
   .login-modal__submit-btn {
     width: 320px;
+    margin-top: auto; /* push button + 'or' row to bottom of modal */
     height: 56px;
     font-size: 16px;
+    margin: 0 auto; /* keep centered on tablet */
+  }
+
+  .login-modal__btn-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* keep 'or / sign up' centered under button */
+  }
+
+  .login-modal__login-or-text {
+    margin-bottom: 0; /* ensure total bottom gap is modal padding: 28px */
+  }
+
+  .login-modal__login-or-text {
+    margin-bottom: 0; /* ensure only 28px padding from modal controls the gap */
   }
 }
 
@@ -97,6 +129,7 @@
 
   .login-modal__login-or-text {
     text-align: center;
-    padding-bottom: 240px;
+    padding-bottom: 0;
+    margin-bottom: 12px; /* 12 + 16px (mobile modal padding) = 28px total */
   }
 }

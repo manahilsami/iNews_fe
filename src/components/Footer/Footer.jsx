@@ -25,6 +25,7 @@ function Footer() {
           TripleTen
         </Link>
         <a
+          className="footer__right-github-link"
           href="https://github.com/manahilsami"
           target="_blank"
           rel="noopener noreferrer"
@@ -36,6 +37,7 @@ function Footer() {
           />
         </a>
         <a
+          className="footer__right-linkedin-link"
           href="https://linkedin.com/in/manahil-sami"
           target="_blank"
           rel="noopener noreferrer"

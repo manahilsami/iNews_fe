@@ -7,6 +7,7 @@
   color: #2f71e5;
   padding-bottom: 24px;
 }
+
 .register-modal__input {
   display: block;
   font-family: Inter;
@@ -63,10 +64,23 @@
   letter-spacing: 0%;
   text-align: center;
   vertical-align: middle;
+  margin-bottom: 0; /* bottom spacing controlled by modal padding: 28px */
 }
 .register-modal__signin-btn {
   border: none;
   background-color: transparent;
   color: #2f71e5;
   cursor: pointer;
+}
+
+/* Error message shown above the Sign up button (desktop/normal resolution) */
+.register-modal__error {
+  font-family: Inter;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 100%;
+  color: #ff0000;
+  text-align: center;
+  /* Ensure 17px gap from the last input: label has 24px bottom padding, so use -7px top margin */
+  margin: -7px 0 16px;
 }

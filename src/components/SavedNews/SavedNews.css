@@ -51,3 +51,26 @@
     letter-spacing: 0px;
   }
 }
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .saved-news__title {
+    font-size: 14px;
+    margin: 0 0 0 0;
+  }
+  /* Override higher-specificity rule applied to the first paragraph */
+  .saved-news > p:first-of-type {
+    margin: 24px 16px 16px 40px;
+  }
+
+  .saved-news__message {
+    font-size: 30px;
+    line-height: 34px;
+    margin: 0 392px 16px 40px;
+    width: 336px;
+    height: 68px;
+  }
+
+  .saved-news__keywords {
+    margin: 0 16px 32px 40px;
+  }
+}

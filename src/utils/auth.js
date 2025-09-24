@@ -3,7 +3,7 @@ import { checkResponse } from "./api.js";
 const baseUrl =
   process.env.NODE_ENV === "production"
     ? "https://api.newsexplorer.fpr.net"
-    : "http://localhost:3000";
+    : "http://localhost:3002";
 
 export const signup = ({ email, password, username }) => {
   return fetch(`${baseUrl}/signup`, {

@@ -11,6 +11,7 @@ import Footer from "../Footer/Footer";
 import LoginModal from "../LoginModal/LoginModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import SavedNews from "../SavedNews/SavedNews";
+import RegisterSuccessModal from "../RegisterSuccessModal/RegisterSuccessModal";
 import Main from "../Main/Main";
 import "./App.css";
 import { signup, signin, checkToken } from "../../utils/auth";
@@ -27,14 +28,21 @@ function App() {
   const [currentUser, setCurrentUser] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [registerError, setRegisterError] = useState("");
+  const [isRegisterSuccessOpen, setIsRegisterSuccessOpen] = useState(false);
   const { pathname } = useLocation();
   const isSavedNewsRoute = pathname === "/saved-news";
   const [savedArticles, setSavedArticles] = useState([]);
   // helper functions to open/close the login modal
   const handleOpenLoginModal = () => setIsLoginModalOpen(true);
   const handleCloseLoginModal = () => setIsLoginModalOpen(false);
-  const handleOpenRegisterModal = () => setIsRegisterModalOpen(true);
-  const handleCloseRegisterModal = () => setIsRegisterModalOpen(false);
+  const handleOpenRegisterModal = () => {
+    setRegisterError("");
+    setIsRegisterModalOpen(true);
+  };
+  const handleCloseRegisterModal = () => {
+    setRegisterError("");
+    setIsRegisterModalOpen(false);
+  };
 
   // Logout clears token and user-related state
   const handleLogout = () => {
@@ -49,27 +57,15 @@ function App() {
 
   const handleRegisterSubmit = ({ email, password, username }) => {
     setRegisterError("");
-    // Send both name and username for maximum compatibility; backend accepts either
+    // Perform signup only; on success, show success modal instead of auto sign-in
     signup({ email, password, username })
-      .then(() => signin({ email, password }))
-      .then((res) => {
-        if (res.token) {
-          localStorage.setItem("jwt", res.token);
-          return checkToken(res.token);
-        }
-        return Promise.reject(new Error("No token received"));
-      })
-      .then((userData) => {
-        setCurrentUser(userData);
-        setUser(userData);
-        setIsLoggedIn(true);
+      .then(() => {
         handleCloseRegisterModal();
+        setIsRegisterSuccessOpen(true);
       })
       .catch((err) => {
         if (err?.status === 409) {
-          setRegisterError(
-            "A user with this email already exists. Try signing in instead."
-          );
+          setRegisterError("This email is not available");
         } else {
           setRegisterError(
             err?.message || "Registration failed. Please try again."
@@ -262,6 +258,14 @@ function App() {
         onRegisterSubmit={handleRegisterSubmit}
         onLoginClick={handleSwitchToLogin}
         errorMessage={registerError}
+      />
+      <RegisterSuccessModal
+        isOpen={isRegisterSuccessOpen}
+        onClose={() => setIsRegisterSuccessOpen(false)}
+        onSignIn={() => {
+          setIsRegisterSuccessOpen(false);
+          setIsLoginModalOpen(true);
+        }}
       />
     </div>
   );
