@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { getNews } from "../../utils/newsApi";
 import Header from "../Header/Header";
@@ -39,6 +39,26 @@ function App() {
     setRegisterError("");
     setIsRegisterModalOpen(true);
   };
+
+  // On app load, if a token exists, restore session and fetch saved articles
+  useEffect(() => {
+    const token = localStorage.getItem("jwt");
+    if (!token) return;
+    checkToken(token)
+      .then((userData) => {
+        setUser(userData);
+        setIsLoggedIn(true);
+        return fetchSavedArticles();
+      })
+      .then(setSavedArticles)
+      .catch((err) => {
+        console.warn("Session restore failed:", err);
+        // If token invalid, ensure logged-out state
+        setIsLoggedIn(false);
+        setUser(null);
+        setSavedArticles([]);
+      });
+  }, []);
   const handleCloseRegisterModal = () => {
     setRegisterError("");
     setIsRegisterModalOpen(false);
@@ -103,11 +123,28 @@ function App() {
   };
   const handleBookmarkToggle = (cardLink) => {
     const token = localStorage.getItem("jwt");
-    return deleteArticle(cardLink, token)
+    // Try to find the saved article by link to obtain its _id for deletion
+    const matchedSaved = savedArticles.find(
+      (a) => a._id === cardLink || a.id === cardLink || a.link === cardLink
+    );
+    const idToDelete = matchedSaved?._id || cardLink;
+    return deleteArticle(idToDelete, token)
       .then((res) => {
-        // You can add any additional logic here, e.g., update state or show notification
-        console.log("Deleted article with link:", cardLink);
-        return res;
+        // Keep saved articles in sync after deletion
+        return fetchSavedArticles()
+          .then((articles) => {
+            setSavedArticles(articles);
+            console.log("Deleted article:", idToDelete);
+            return res;
+          })
+          .catch((err) => {
+            // Even if refetch fails, return the original response
+            console.error(
+              "Failed to refresh saved articles after delete:",
+              err
+            );
+            return res;
+          });
       })
       .catch((err) => {
         // Handle error (e.g., show error message)
@@ -122,8 +159,17 @@ function App() {
     const articleWithKeyword = { ...article, keyword: searchKeyword };
     return saveArticle(articleWithKeyword, token)
       .then((savedArticle) => {
-        // You can add any additional logic here, e.g., update state or show notification
-        return savedArticle;
+        // Refetch and update saved articles so Saved News reflects changes immediately
+        return fetchSavedArticles()
+          .then((articles) => {
+            setSavedArticles(articles);
+            return savedArticle;
+          })
+          .catch((err) => {
+            console.error("Failed to refresh saved articles after save:", err);
+            // Return savedArticle even if refresh fails, so caller flow continues
+            return savedArticle;
+          });
       })
       .catch((err) => {
         // Handle error (e.g., show error message)
