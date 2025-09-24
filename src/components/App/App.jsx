@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
 import { getNews } from "../../utils/newsApi";
 import Header from "../Header/Header";
 import SearchForm from "../SearchForm/SearchForm";
@@ -18,6 +18,7 @@ import { signup, signin, checkToken } from "../../utils/auth";
 import { saveArticle, deleteArticle, getSavedArticles } from "../../utils/api";
 
 function App() {
+  const navigate = useNavigate();
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -73,6 +74,8 @@ function App() {
     setCurrentUser(null);
     setIsLoggedIn(false);
     setSavedArticles([]);
+    // Redirect to home after logout
+    navigate("/", { replace: true });
   };
 
   const handleRegisterSubmit = ({ email, password, username }) => {
