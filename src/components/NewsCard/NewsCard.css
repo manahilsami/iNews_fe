@@ -316,7 +316,7 @@
     font-size: 22px;
     line-height: 24px;
     width: 256px;
-    margin: 12px 16px 10px 16px;
+    margin: 10px 16px 14px 16px;
     padding: 0;
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -327,7 +327,7 @@
 
   .news-card__description {
     width: 256px;
-    margin: 0 16px 12px 16px;
+    margin: 0 16px 30px 16px;
     font-size: 16px;
     line-height: 22px;
     height: 66px; /* 3 lines @22px */
@@ -345,6 +345,14 @@
 
   .news-card__source {
     width: 256px;
-    margin: 0 16px 16px 16px;
+    margin: 3px 16px 16px 16px;
+  }
+
+  .news-card__keyword {
+    top: 16px;
+    left: 16px;
+    width: 83px;
+    height: 40px;
+    padding: 8px 20px;
   }
 }

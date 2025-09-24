@@ -69,7 +69,7 @@ function NewsCardList({
       )}
       {/* {console.log("Cards passed to NewsCardList:", cards)} */}
       <div className="news-card-list__grid">
-        {cards.slice(0, visibleCount).map((card) => (
+        {(isSavedSection ? cards : cards.slice(0, visibleCount)).map((card) => (
           <NewsCard
             key={card._id || card.link}
             card={card}
@@ -80,7 +80,7 @@ function NewsCardList({
           />
         ))}
       </div>
-      {visibleCount < cards.length && (
+      {!isSavedSection && visibleCount < cards.length && (
         <button className="news-card-list__show-more" onClick={handleShowMore}>
           Show more
         </button>

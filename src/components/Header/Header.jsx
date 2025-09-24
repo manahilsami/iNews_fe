@@ -37,6 +37,7 @@ function Header({ onSignInClick, user, onLogout, isSaved }) {
         onClose={() => setIsMenuOpen(false)}
         onSignInClick={onSignInClick}
         onHomeClick={() => navigate("/")}
+        user={user}
       />
     </header>
   );

@@ -76,6 +76,7 @@
     grid-template-rows: auto auto; /* links row then copyright row */
     grid-template-columns: 1fr; /* single column grid container */
     row-gap: 16px;
+    padding-top: 20px;
   }
 
   .footer__right {

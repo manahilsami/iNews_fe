@@ -83,4 +83,14 @@
   .header__right {
     display: none; /* hide nav on mobile, menu will represent it */
   }
+
+  /* Saved-news header on mobile: white background + black menu icon */
+  .header--saved {
+    background: #ffffff;
+    border-bottom: 0.25px solid rgba(26, 27, 34, 0.3);
+  }
+
+  .header--saved .header__menu {
+    background-image: url("../../images/menu_black.png");
+  }
 }

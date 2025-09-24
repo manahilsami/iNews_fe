@@ -9,6 +9,7 @@ export default function MobileMenu({
   onClose,
   onSignInClick,
   onHomeClick,
+  user,
 }) {
   useEffect(() => {
     if (!isOpen) return;
@@ -66,17 +67,28 @@ export default function MobileMenu({
           >
             Home
           </Link>
+          {user ? (
+            <Link
+              to="/saved-news"
+              className="mobile-menu__saved"
+              onClick={onClose}
+            >
+              Saved articles
+            </Link>
+          ) : null}
 
-          <button
-            type="button"
-            className="mobile-menu__signin"
-            onClick={() => {
-              onClose();
-              onSignInClick?.();
-            }}
-          >
-            Sign in
-          </button>
+          {!user ? (
+            <button
+              type="button"
+              className="mobile-menu__signin"
+              onClick={() => {
+                onClose();
+                onSignInClick?.();
+              }}
+            >
+              Sign in
+            </button>
+          ) : null}
         </div>
       </div>
     </div>,
