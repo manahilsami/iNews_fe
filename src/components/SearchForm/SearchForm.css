@@ -131,14 +131,13 @@
   }
 
   .searchform__searchbar-button {
-    /* align-self: flex-start; */
     height: 56px;
-    padding: 16px 116px;
+    padding: 16px 20px;
     font-size: 18px;
     line-height: 24px;
     border-radius: 100px;
     margin: 0;
-    width: 273px;
+    width: 100%;
     border: 0;
   }
 }
