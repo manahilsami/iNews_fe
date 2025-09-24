@@ -1,5 +1,5 @@
 import "./SearchForm.css";
-import React, { useState } from "react";
+import { useState } from "react";
 
 function SearchForm({ onSearch }) {
   const [keyword, setKeyword] = useState("");
@@ -8,7 +8,7 @@ function SearchForm({ onSearch }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!keyword) {
-      setError("Please enter a keyword"); // if keyword is empty, error shows
+      setError("Please enter a keyword");
       return;
     }
     setError("");
@@ -35,7 +35,6 @@ function SearchForm({ onSearch }) {
           Search
         </button>
       </form>
-      {/* {error && <p className="searchform__error">{error}</p>} */}
     </div>
   );
 }

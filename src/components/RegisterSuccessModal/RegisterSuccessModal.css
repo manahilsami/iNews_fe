@@ -1,7 +1,7 @@
 .modal__content_success {
   width: 430px;
   height: 182px;
-  padding: 43px 79px 51px 36px; /* top right bottom left */
+  padding: 43px 79px 51px 36px;
   box-sizing: border-box;
 }
 
@@ -16,7 +16,7 @@
 }
 
 .success-modal__signin-btn {
-  margin-top: 14px; /* vertical gap between title and button */
+  margin-top: 14px;
   border: none;
   background: transparent;
   padding: 0;
@@ -27,5 +27,5 @@
   letter-spacing: 0%;
   color: #2f71e5;
   cursor: pointer;
-  text-align: left; /* start at left */
+  text-align: left;
 }

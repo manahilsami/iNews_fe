@@ -12,7 +12,6 @@ function checkResponse(res) {
   if (res.ok) {
     return res.json();
   }
-  // Try to parse error body for message; fall back to status text
   return res
     .json()
     .catch(() => ({ message: res.statusText }))

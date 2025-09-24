@@ -1,5 +1,4 @@
 .saved-news {
-  /* White background behind the Saved News texts */
   background-color: #ffffff;
 }
 
@@ -10,7 +9,6 @@
   line-height: 24px;
   letter-spacing: 0px;
   color: #1a1b2280;
-  /* 80px from the top, aligned 104px from the left */
   margin: 80px 0 0 104px;
 }
 
@@ -21,18 +19,14 @@
   line-height: 46px;
   letter-spacing: 0px;
   color: #1a1b22;
-  /* 28px below the label, aligned 104px from the left */
   margin: 28px 0 0 104px;
 }
 
-/* "Saved articles" label (the first p inside .saved-news) */
 .saved-news > p:first-of-type {
-  /* 40px below the header, aligned 104px from the left */
   margin: 40px 0 0 104px;
 }
 
 .saved-news__keywords {
-  /* 30px below the title, aligned 104px from the left */
   margin: 30px 0 56px 104px;
 
   .saved-news__keywords-label {
@@ -57,7 +51,6 @@
     font-size: 14px;
     margin: 0 0 0 0;
   }
-  /* Override higher-specificity rule applied to the first paragraph */
   .saved-news > p:first-of-type {
     margin: 24px 16px 16px 40px;
   }

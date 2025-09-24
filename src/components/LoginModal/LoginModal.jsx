@@ -12,7 +12,6 @@ export default function LoginModal({
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState("");
 
-  // Resets form fields when the modal is opened
   useEffect(() => {
     if (isOpen) {
       setEmail("");
@@ -23,7 +22,6 @@ export default function LoginModal({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Basic email format validation
     const emailPattern =
       /^(?:[a-zA-Z0-9_'^&\/+{}=!?$%#`~.-]+)@(?:[a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}$/;
     if (!emailPattern.test(email)) {

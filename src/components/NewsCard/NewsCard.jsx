@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./NewsCard.css";
 
 function NewsCard({
@@ -11,7 +11,6 @@ function NewsCard({
   const [bookmarked, setBookmarked] = useState(false);
   const [selectedCardId, setSelectedCardId] = useState(null);
   const [isDeleting, setIsDeleting] = useState(false);
-  // Accept onSave as a prop
   const token = localStorage.getItem("jwt");
 
   const handleBookmarkClick = () => {
@@ -20,7 +19,6 @@ function NewsCard({
       if (!isSavedSection && typeof onSave === "function" && newState) {
         onSave(card, token);
       }
-      // If unchecking, call onBookmarkToggle with card id and disable button
       if (!newState && typeof onBookmarkToggle === "function") {
         setSelectedCardId(card._id || card.id || card.link);
         setIsDeleting(true);

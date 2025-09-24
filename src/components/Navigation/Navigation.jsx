@@ -1,5 +1,4 @@
 import "./Navigation.css";
-import React from "react";
 import logoutIconDark from "../../images/logout.svg";
 import logoutIconWhite from "../../images/logout-white.png";
 import { Link, useLocation } from "react-router-dom";

@@ -63,9 +63,9 @@
     flex-direction: row;
     align-items: flex-start;
     justify-content: center;
-    gap: 32px; /* slightly tighter on tablet */
-    height: auto; /* allow content to size naturally */
-    padding-top: 0; /* we'll control spacing via element margins */
+    gap: 32px;
+    height: auto;
+    padding-top: 0;
   }
 
   .about__left {

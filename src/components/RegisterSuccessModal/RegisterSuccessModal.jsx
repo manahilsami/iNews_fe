@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import "../ModalWithForm/ModalWithForm.css"; // reuse base modal styles
+import { useEffect } from "react";
+import "../ModalWithForm/ModalWithForm.css";
 import "./RegisterSuccessModal.css";
 
 export default function RegisterSuccessModal({ isOpen, onClose, onSignIn }) {

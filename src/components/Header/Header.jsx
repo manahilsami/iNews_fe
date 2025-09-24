@@ -1,5 +1,5 @@
 import "./Header.css";
-import React, { useState } from "react";
+import { useState } from "react";
 import logoWhite from "../../images/NewsExplorer-white.svg";
 import logoBlack from "../../images/NewsExplorer-black.svg";
 import Navigation from "../Navigation/Navigation";

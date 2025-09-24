@@ -9,7 +9,7 @@
   background: transparent;
   cursor: pointer;
   padding: 0 16px;
-  position: relative; /* needed so active underline anchors to this element */
+  position: relative;
 }
 
 .navigation__user-btn {
@@ -21,14 +21,14 @@
   color: rgba(255, 255, 255, 1);
   border: 1px solid rgba(255, 255, 255, 1);
   border-radius: 100px;
-  min-width: auto; /* let pill size to its content */
+  min-width: auto;
   height: 48px;
-  padding: 0 10px 0 16px; /* right padding 10px, left 16px */
+  padding: 0 10px 0 16px;
   margin: 0;
-  display: inline-flex; /* pill container */
+  display: inline-flex;
   align-items: center;
   justify-content: flex-start;
-  gap: 15px; /* 15px between name and icon */
+  gap: 15px;
   background: transparent;
 }
 .navigation {
@@ -39,29 +39,27 @@
   border: none;
 }
 
-/* Active underline: default (home/dark header) is white */
 .navigation__home.navigation__active::after,
 .navigation__saved.navigation__active::after {
   content: "";
   position: absolute;
   left: -8px;
   right: auto;
-  width: 68px; /* underline matches the button width (text + padding) */
-  bottom: -30px; /* align near header bottom border */
+  width: 68px;
+  bottom: -30px;
   height: 4px;
   background: #ffffff;
   border-radius: 3px;
 }
 
-/* On saved header (white), underline should be dark */
 .header--saved .navigation__home.navigation__active::after,
 .header--saved .navigation__saved.navigation__active::after {
   content: "";
   position: absolute;
   left: -15px;
   right: auto;
-  width: 178px; /* underline matches the button width (text + padding) */
-  bottom: -30px; /* align near header bottom border */
+  width: 178px;
+  bottom: -30px;
   height: 4px;
   background: #000000;
   border-radius: 3px;
@@ -70,7 +68,7 @@
 .navigation__user-wrap {
   display: flex;
   align-items: center;
-  gap: 0; /* icon moved inside pill */
+  gap: 0;
 }
 
 .navigation__logout-btn {
@@ -87,7 +85,6 @@
   cursor: pointer;
 }
 
-/* New: logout icon next to username */
 .navigation__logout-icon {
   width: 24px;
   height: 24px;
@@ -95,9 +92,8 @@
   display: inline-block;
 }
 
-/* When header is white, ensure icon reads as dark */
 .header--saved .navigation__logout-icon {
-  filter: none; /* rely on the asset color (expected black) */
+  filter: none;
 }
 
 .navigation__home {
@@ -112,7 +108,7 @@
   background: transparent;
   border: none;
   cursor: pointer;
-  position: relative; /* for underline */
+  position: relative;
 }
 
 .navigation__signin {
@@ -135,7 +131,6 @@
   cursor: pointer;
 }
 
-/* When header is white on saved-news, switch nav colors to dark */
 .header--saved .navigation__home,
 .header--saved .navigation__saved {
   color: #1a1b22;
@@ -162,11 +157,11 @@
   }
 
   .navigation__user-btn {
-    height: auto; /* override base height for flexible vertical sizing */
-    width: auto; /* let pill expand for longer usernames */
+    height: auto;
+    width: auto;
     font-size: 16px;
     gap: 13px;
-    padding: 12px 8px 12px 12px; /* keep top/bottom 12px, tighter right */
+    padding: 12px 8px 12px 12px;
   }
 
   .navigation__saved,

@@ -1,5 +1,5 @@
 import "./About.css";
-import React from "react";
+
 import manahil from "../../images/manahil.png";
 
 function About() {

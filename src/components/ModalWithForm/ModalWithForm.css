@@ -32,7 +32,6 @@
 .modal__content {
   background-color: #fff;
   position: relative;
-  /* Top: 34px, Sides: 36px, Bottom: 28px to match spec */
   padding: 34px 36px 28px 36px;
   width: 430px;
   box-sizing: border-box;
@@ -69,22 +68,22 @@
   }
 
   .modal__close {
-    position: fixed; /* place above the card, relative to viewport */
+    position: fixed;
     top: 16px;
-    right: 16px; /* align to the viewport's right, matching screenshot */
+    right: 16px;
     height: 24px;
     width: 24px;
-    background-image: none; /* ensure glyph is visible on white */
+    background-image: none;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    color: #ffffff; /* white X contrasting hero background */
+    color: #ffffff;
     z-index: 1002;
   }
 
   .modal__close::before {
-    content: "\00D7"; /* × glyph */
+    content: "\00D7";
     font-size: 24px;
     line-height: 24px;
     color: inherit;
@@ -98,20 +97,19 @@
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {
-  /* Keep the overlay full-screen; position content box at exact offsets */
   .modal {
     justify-content: flex-start;
     align-items: flex-start;
-    padding: 0; /* ensure offsets are exact from viewport */
+    padding: 0;
   }
 
   .modal__content {
     width: 430px;
     top: 207px;
     left: 169px;
-    padding: 34px 36px 28px 36px; /* bottom = 28px to match required spacing */
+    padding: 34px 36px 28px 36px;
     display: flex;
-    flex-direction: column; /* allow pushing footer area to bottom */
+    flex-direction: column;
   }
 
   .modal__form {
@@ -119,7 +117,7 @@
     margin-bottom: 0;
     display: flex;
     flex-direction: column;
-    flex: 1; /* consume available vertical space so buttons can sit at bottom */
-    justify-content: space-between; /* push last row to bottom, remove internal bottom gap */
+    flex: 1;
+    justify-content: space-between;
   }
 }

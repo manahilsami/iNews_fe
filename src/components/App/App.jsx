@@ -1,13 +1,12 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
 import { getNews } from "../../utils/newsApi";
 import Header from "../Header/Header";
 import SearchForm from "../SearchForm/SearchForm";
 import NewsCardList from "../NewsCardList/NewsCardList";
-// import About from "../About/About";
+
 import Footer from "../Footer/Footer";
-// import Preloader from "../Preloader/Preloader";
-// import NewsCardList from "../NewsCardList/NewsCardList";
+
 import LoginModal from "../LoginModal/LoginModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import SavedNews from "../SavedNews/SavedNews";
@@ -33,7 +32,6 @@ function App() {
   const { pathname } = useLocation();
   const isSavedNewsRoute = pathname === "/saved-news";
   const [savedArticles, setSavedArticles] = useState([]);
-  // helper functions to open/close the login modal
   const handleOpenLoginModal = () => setIsLoginModalOpen(true);
   const handleCloseLoginModal = () => setIsLoginModalOpen(false);
   const handleOpenRegisterModal = () => {
@@ -41,7 +39,6 @@ function App() {
     setIsRegisterModalOpen(true);
   };
 
-  // On app load, if a token exists, restore session and fetch saved articles
   useEffect(() => {
     const token = localStorage.getItem("jwt");
     if (!token) return;
@@ -54,7 +51,6 @@ function App() {
       .then(setSavedArticles)
       .catch((err) => {
         console.warn("Session restore failed:", err);
-        // If token invalid, ensure logged-out state
         setIsLoggedIn(false);
         setUser(null);
         setSavedArticles([]);
@@ -65,7 +61,6 @@ function App() {
     setIsRegisterModalOpen(false);
   };
 
-  // Logout clears token and user-related state
   const handleLogout = () => {
     try {
       localStorage.removeItem("jwt");
@@ -74,13 +69,11 @@ function App() {
     setCurrentUser(null);
     setIsLoggedIn(false);
     setSavedArticles([]);
-    // Redirect to home after logout
     navigate("/", { replace: true });
   };
 
   const handleRegisterSubmit = ({ email, password, username }) => {
     setRegisterError("");
-    // Perform signup only; on success, show success modal instead of auto sign-in
     signup({ email, password, username })
       .then(() => {
         handleCloseRegisterModal();
@@ -109,31 +102,26 @@ function App() {
         throw err;
       });
   };
-  // Function to fetch saved articles for the user
   const fetchSavedArticles = () => {
     const token = localStorage.getItem("jwt");
     return getSavedArticles(token)
       .then((articles) => {
-        // You can add any additional logic here, e.g., update state or show notification
         console.log("Fetched saved articles:", articles);
         return articles;
       })
       .catch((err) => {
-        // Handle error (e.g., show error message)
         console.error("Failed to fetch saved articles:", err);
         throw err;
       });
   };
   const handleBookmarkToggle = (cardLink) => {
     const token = localStorage.getItem("jwt");
-    // Try to find the saved article by link to obtain its _id for deletion
     const matchedSaved = savedArticles.find(
       (a) => a._id === cardLink || a.id === cardLink || a.link === cardLink
     );
     const idToDelete = matchedSaved?._id || cardLink;
     return deleteArticle(idToDelete, token)
       .then((res) => {
-        // Keep saved articles in sync after deletion
         return fetchSavedArticles()
           .then((articles) => {
             setSavedArticles(articles);
@@ -141,7 +129,6 @@ function App() {
             return res;
           })
           .catch((err) => {
-            // Even if refetch fails, return the original response
             console.error(
               "Failed to refresh saved articles after delete:",
               err
@@ -150,19 +137,15 @@ function App() {
           });
       })
       .catch((err) => {
-        // Handle error (e.g., show error message)
         console.error("Failed to delete article:", err);
         throw err;
       });
   };
 
-  // Function to save an article using the API
   const handleSaveArticle = (article, token) => {
-    // Add keyword to article before saving
     const articleWithKeyword = { ...article, keyword: searchKeyword };
     return saveArticle(articleWithKeyword, token)
       .then((savedArticle) => {
-        // Refetch and update saved articles so Saved News reflects changes immediately
         return fetchSavedArticles()
           .then((articles) => {
             setSavedArticles(articles);
@@ -170,18 +153,15 @@ function App() {
           })
           .catch((err) => {
             console.error("Failed to refresh saved articles after save:", err);
-            // Return savedArticle even if refresh fails, so caller flow continues
             return savedArticle;
           });
       })
       .catch((err) => {
-        // Handle error (e.g., show error message)
         console.error("Failed to save article:", err);
         throw err;
       });
   };
 
-  // Dummy login handler - replace with real logic
   const handleLoginSubmit = ({ email, password }) => {
     signin({ email, password })
       .then((res) => {
@@ -196,7 +176,6 @@ function App() {
         setUser(userData);
         setIsLoggedIn(true);
         handleCloseLoginModal();
-        // Fetch saved articles after login
         fetchSavedArticles()
           .then(setSavedArticles)
           .catch(() => setSavedArticles([]));
@@ -205,13 +184,7 @@ function App() {
         console.error("Login failed:", err);
       });
   };
-  // // Dummy register handler - replace with real logic
-  // const handleRegisterSubmit = (data) => {
-  //   setUser({ name: data.name });
-  //   setIsRegisterModalOpen(false);
-  // };
 
-  //switch models
   const handleSwitchToRegister = () => {
     setIsLoginModalOpen(false);
     setIsRegisterModalOpen(true);
@@ -222,31 +195,20 @@ function App() {
     setIsLoginModalOpen(true);
   };
 
-  // // Dummy register click handler - will open register modal on click
-  // const handleRegisterClick = () => {
-  //   // handle register logic here
-  //   setIsRegisterModalOpen(false);
-  // };
-
-  // const handleLoginClick = () => {
-  //   //handle login logic here
-  //   setIsRegisterModalOpen(false);
-  // };
-
   const handleSearch = (keyword) => {
-    setIsLoading(true); // this will show the preloader
+    setIsLoading(true);
     setHasSearched(true);
     setSearchKeyword(keyword);
-    getNews(keyword) // frontend API function that calls the newsAPI
+    getNews(keyword)
       .then((articles) => {
-        setSearchResults(articles); // stores the fetched articles in local state
+        setSearchResults(articles);
       })
       .catch((err) => {
         console.error(err);
-        setSearchResults([]); // if there's an error, results are cleared, hence the empty array
+        setSearchResults([]);
       })
       .finally(() => {
-        setIsLoading(false); // this hides the preloader when articles appear or error occurs
+        setIsLoading(false);
       });
   };
 

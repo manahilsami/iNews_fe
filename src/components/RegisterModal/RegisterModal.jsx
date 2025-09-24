@@ -13,7 +13,6 @@ export default function RegisterModal({
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
 
-  // Resets form when the modal opens
   useEffect(() => {
     if (isOpen) {
       setEmail("");
@@ -24,7 +23,6 @@ export default function RegisterModal({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Backend expects `name`; map the UI field `username` to `name` here
     onRegisterSubmit({ email, password, username });
   };
 

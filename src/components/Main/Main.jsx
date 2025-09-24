@@ -1,18 +1,12 @@
 import "./Main.css";
-import SearchForm from "../SearchForm/SearchForm";
 import Preloader from "../Preloader/Preloader";
-import NewsCardList from "../NewsCardList/NewsCardList";
 import About from "../About/About";
 import notfound from "../../images/not-found_v1.png";
 
 function Main({ isLoading, searchResults, hasSearched }) {
   return (
     <main className="main">
-      {/* loader */}
       {isLoading && <Preloader />}
-      {/* stops loading & shows search results if they exist */}
-      {/* NewsCardList removed from Main. Now handled in App.jsx */}
-      {/* loading stops and shows msg if no results found, and user has searched */}
       {!isLoading && hasSearched && searchResults.length === 0 && (
         <div className="main__no-results">
           <img
