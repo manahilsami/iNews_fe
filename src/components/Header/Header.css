@@ -93,4 +93,9 @@
   .header--saved .header__menu {
     background-image: url("../../images/menu_black.png");
   }
+
+  /* When a modal is open, hide the hamburger so only the × is visible */
+  body.modal-open .header__menu {
+    visibility: hidden;
+  }
 }

@@ -65,14 +65,35 @@
   .modal__content {
     width: 320px;
     height: 560px;
-    padding: 16px; /* uniform padding on mobile */
+    padding: 16px;
   }
 
   .modal__close {
+    position: fixed; /* place above the card, relative to viewport */
     top: 16px;
-    left: 280px;
+    right: 16px; /* align to the viewport's right, matching screenshot */
     height: 24px;
     width: 24px;
+    background-image: none; /* ensure glyph is visible on white */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #ffffff; /* white X contrasting hero background */
+    z-index: 1002;
+  }
+
+  .modal__close::before {
+    content: "\00D7"; /* × glyph */
+    font-size: 24px;
+    line-height: 24px;
+    color: inherit;
+  }
+
+  .modal__content {
+    background-color: #fff;
+    position: absolute;
+    top: 56px;
   }
 }
 
