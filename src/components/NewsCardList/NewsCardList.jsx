@@ -25,7 +25,7 @@ function NewsCardList({
       {!isSavedSection && (
         <p className="news-card-list__title">Search results</p>
       )}
-      <div className="news-card-list__grid">
+      <ul className="news-card-list__grid" role="list">
         {(isSavedSection ? cards : cards.slice(0, visibleCount)).map((card) => (
           <NewsCard
             key={card._id || card.link}
@@ -36,7 +36,7 @@ function NewsCardList({
             onBookmarkToggle={onBookmarkToggle}
           />
         ))}
-      </div>
+      </ul>
       {!isSavedSection && visibleCount < cards.length && (
         <button className="news-card-list__show-more" onClick={handleShowMore}>
           Show more

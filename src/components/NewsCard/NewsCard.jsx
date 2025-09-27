@@ -42,7 +42,7 @@ function NewsCard({
   };
 
   return (
-    <div className="news-card">
+    <li className="news-card" role="listitem">
       <img
         className="news-card__image"
         src={card?.image || "https://via.placeholder.com/400x272"}
@@ -91,7 +91,7 @@ function NewsCard({
         </p>
         <p className="news-card__source">{card?.source || "News Source"}</p>
       </div>
-    </div>
+    </li>
   );
 }
 
