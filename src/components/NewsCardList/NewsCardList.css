@@ -48,6 +48,11 @@
   color: #1a1b22;
   display: block;
   margin: 0 auto 80px auto;
+  cursor: pointer;
+}
+
+.news-card-list__show-more:hover {
+  background-color: #e8e8e8;
 }
 
 .news-card-list--saved .news-card-list__grid {
