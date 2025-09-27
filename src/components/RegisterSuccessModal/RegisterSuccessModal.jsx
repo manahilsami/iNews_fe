@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import PropTypes from "prop-types";
 import "../ModalWithForm/ModalWithForm.css";
 import "./RegisterSuccessModal.css";
 
@@ -40,3 +41,9 @@ export default function RegisterSuccessModal({ isOpen, onClose, onSignIn }) {
     </div>
   );
 }
+
+RegisterSuccessModal.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
+  onSignIn: PropTypes.func.isRequired,
+};

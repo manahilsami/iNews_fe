@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import "./LoginModal.css";
 
@@ -23,7 +24,7 @@ export default function LoginModal({
   const handleSubmit = (e) => {
     e.preventDefault();
     const emailPattern =
-      /^(?:[a-zA-Z0-9_'^&\/+{}=!?$%#`~.-]+)@(?:[a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}$/;
+      /^(?:[a-zA-Z0-9_'^&/+{}=!?$%#`~.-]+)@(?:[a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}$/;
     if (!emailPattern.test(email)) {
       setEmailError("Invalid email address");
       return;
@@ -95,3 +96,10 @@ export default function LoginModal({
     </div>
   );
 }
+
+LoginModal.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
+  onLoginSubmit: PropTypes.func.isRequired,
+  onRegisterClick: PropTypes.func.isRequired,
+};

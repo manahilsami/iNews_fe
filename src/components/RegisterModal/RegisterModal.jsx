@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import "./RegisterModal.css";
 
@@ -102,3 +103,15 @@ export default function RegisterModal({
     </div>
   );
 }
+
+RegisterModal.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
+  onLoginClick: PropTypes.func.isRequired,
+  onRegisterSubmit: PropTypes.func.isRequired,
+  errorMessage: PropTypes.string,
+};
+
+RegisterModal.defaultProps = {
+  errorMessage: "",
+};

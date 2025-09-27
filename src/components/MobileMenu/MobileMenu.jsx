@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import PropTypes from "prop-types";
 import { createPortal } from "react-dom";
 import { Link } from "react-router-dom";
 import "./MobileMenu.css";
@@ -94,3 +95,24 @@ export default function MobileMenu({
     document.body
   );
 }
+
+MobileMenu.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
+  onSignInClick: PropTypes.func,
+  onHomeClick: PropTypes.func,
+  user: PropTypes.oneOfType([
+    PropTypes.shape({
+      name: PropTypes.string,
+      email: PropTypes.string,
+      _id: PropTypes.string,
+    }),
+    PropTypes.oneOf([null]),
+  ]),
+};
+
+MobileMenu.defaultProps = {
+  onSignInClick: undefined,
+  onHomeClick: undefined,
+  user: null,
+};

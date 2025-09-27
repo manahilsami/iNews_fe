@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import PropTypes from "prop-types";
 import "./NewsCardList.css";
 import NewsCard from "../NewsCard/NewsCard";
 
@@ -47,3 +48,30 @@ function NewsCardList({
 }
 
 export default NewsCardList;
+
+NewsCardList.propTypes = {
+  cards: PropTypes.arrayOf(
+    PropTypes.exact({
+      _id: PropTypes.string,
+      id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+      link: PropTypes.string,
+      image: PropTypes.string,
+      title: PropTypes.string,
+      keyword: PropTypes.string,
+      date: PropTypes.string,
+      description: PropTypes.string,
+      source: PropTypes.string,
+    })
+  ).isRequired,
+  isSavedSection: PropTypes.bool,
+  onDelete: PropTypes.func,
+  onSave: PropTypes.func,
+  onBookmarkToggle: PropTypes.func,
+};
+
+NewsCardList.defaultProps = {
+  isSavedSection: false,
+  onDelete: undefined,
+  onSave: undefined,
+  onBookmarkToggle: undefined,
+};

@@ -1,23 +1,19 @@
 import "./SearchForm.css";
 import { useState } from "react";
+import PropTypes from "prop-types";
 
 function SearchForm({ onSearch }) {
   const [keyword, setKeyword] = useState("");
-  const [error, setError] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!keyword) {
-      setError("Please enter a keyword");
-      return;
-    }
-    setError("");
+    if (!keyword) return;
     onSearch(keyword);
   };
 
   return (
     <div className="searchform">
-      <p className="searchform__title">What's going on in the world?</p>
+      <p className="searchform__title">What&apos;s going on in the world?</p>
       <p className="searchform__subtitle">
         Find the latest news on any topic and save them in your personal
         account.
@@ -40,3 +36,7 @@ function SearchForm({ onSearch }) {
 }
 
 export default SearchForm;
+
+SearchForm.propTypes = {
+  onSearch: PropTypes.func.isRequired,
+};

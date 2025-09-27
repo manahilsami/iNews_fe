@@ -1,5 +1,6 @@
 import "./Header.css";
 import { useState } from "react";
+import PropTypes from "prop-types";
 import logoWhite from "../../images/NewsExplorer-white.svg";
 import logoBlack from "../../images/NewsExplorer-black.svg";
 import Navigation from "../Navigation/Navigation";
@@ -42,4 +43,21 @@ function Header({ onSignInClick, user, onLogout, isSaved }) {
     </header>
   );
 }
+Header.propTypes = {
+  onSignInClick: PropTypes.func.isRequired,
+  user: PropTypes.oneOfType([
+    PropTypes.shape({
+      name: PropTypes.string,
+      email: PropTypes.string,
+      _id: PropTypes.string,
+    }),
+    PropTypes.oneOf([null]),
+  ]),
+  onLogout: PropTypes.func.isRequired,
+  isSaved: PropTypes.bool,
+};
+Header.defaultProps = {
+  user: null,
+  isSaved: false,
+};
 export default Header;

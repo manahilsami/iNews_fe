@@ -1,10 +1,5 @@
-const newsApiBaseUrl =
-  process.env.NODE_ENV === "production"
-    ? "https://nomoreparties.co/news/v2/everything"
-    : "https://newsapi.org/v2/everything";
-
 const baseUrl =
-  process.env.NODE_ENV === "production"
+  import.meta.env.MODE === "production" || import.meta.env.PROD
     ? "https://api.newsexplorer.fpr.net"
     : "http://localhost:3002";
 

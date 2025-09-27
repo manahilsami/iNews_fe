@@ -25,8 +25,6 @@ function App() {
   const [hasSearched, setHasSearched] = useState(false);
   const [searchKeyword, setSearchKeyword] = useState("");
   const [user, setUser] = useState(null);
-  const [currentUser, setCurrentUser] = useState(null);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [registerError, setRegisterError] = useState("");
   const [isRegisterSuccessOpen, setIsRegisterSuccessOpen] = useState(false);
   const { pathname } = useLocation();
@@ -34,10 +32,6 @@ function App() {
   const [savedArticles, setSavedArticles] = useState([]);
   const handleOpenLoginModal = () => setIsLoginModalOpen(true);
   const handleCloseLoginModal = () => setIsLoginModalOpen(false);
-  const handleOpenRegisterModal = () => {
-    setRegisterError("");
-    setIsRegisterModalOpen(true);
-  };
 
   useEffect(() => {
     const token = localStorage.getItem("jwt");
@@ -45,13 +39,11 @@ function App() {
     checkToken(token)
       .then((userData) => {
         setUser(userData);
-        setIsLoggedIn(true);
         return fetchSavedArticles();
       })
       .then(setSavedArticles)
       .catch((err) => {
         console.warn("Session restore failed:", err);
-        setIsLoggedIn(false);
         setUser(null);
         setSavedArticles([]);
       });
@@ -64,10 +56,11 @@ function App() {
   const handleLogout = () => {
     try {
       localStorage.removeItem("jwt");
-    } catch (_) {}
+    } catch (e) {
+      // Swallow error: removing JWT from storage failed (likely storage unavailable)
+      // Intentionally ignoring; logout proceeds using in-memory state reset.
+    }
     setUser(null);
-    setCurrentUser(null);
-    setIsLoggedIn(false);
     setSavedArticles([]);
     navigate("/", { replace: true });
   };
@@ -174,7 +167,6 @@ function App() {
       .then((userData) => {
         console.log("Logged in user data:", userData);
         setUser(userData);
-        setIsLoggedIn(true);
         handleCloseLoginModal();
         fetchSavedArticles()
           .then(setSavedArticles)

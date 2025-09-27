@@ -1,4 +1,5 @@
 import { useState } from "react";
+import PropTypes from "prop-types";
 import "./NewsCard.css";
 
 function NewsCard({
@@ -9,7 +10,6 @@ function NewsCard({
   onBookmarkToggle,
 }) {
   const [bookmarked, setBookmarked] = useState(false);
-  const [selectedCardId, setSelectedCardId] = useState(null);
   const [isDeleting, setIsDeleting] = useState(false);
   const token = localStorage.getItem("jwt");
 
@@ -20,7 +20,6 @@ function NewsCard({
         onSave(card, token);
       }
       if (!newState && typeof onBookmarkToggle === "function") {
-        setSelectedCardId(card._id || card.id || card.link);
         setIsDeleting(true);
         Promise.resolve(
           onBookmarkToggle(card._id || card.id || card.link)
@@ -96,3 +95,28 @@ function NewsCard({
 }
 
 export default NewsCard;
+
+NewsCard.propTypes = {
+  card: PropTypes.exact({
+    _id: PropTypes.string,
+    id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    link: PropTypes.string,
+    image: PropTypes.string,
+    title: PropTypes.string,
+    keyword: PropTypes.string,
+    date: PropTypes.string,
+    description: PropTypes.string,
+    source: PropTypes.string,
+  }).isRequired,
+  isSavedSection: PropTypes.bool,
+  onDelete: PropTypes.func,
+  onSave: PropTypes.func,
+  onBookmarkToggle: PropTypes.func,
+};
+
+NewsCard.defaultProps = {
+  isSavedSection: false,
+  onDelete: undefined,
+  onSave: undefined,
+  onBookmarkToggle: undefined,
+};

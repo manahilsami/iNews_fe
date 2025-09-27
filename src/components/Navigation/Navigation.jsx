@@ -2,6 +2,7 @@ import "./Navigation.css";
 import logoutIconDark from "../../images/logout.svg";
 import logoutIconWhite from "../../images/logout-white.png";
 import { Link, useLocation } from "react-router-dom";
+import PropTypes from "prop-types";
 
 function Navigation({ onSignInClick, user, onLogout, isSaved }) {
   const logoutIcon = isSaved ? logoutIconDark : logoutIconWhite;
@@ -55,3 +56,23 @@ function Navigation({ onSignInClick, user, onLogout, isSaved }) {
 }
 
 export default Navigation;
+
+Navigation.propTypes = {
+  onSignInClick: PropTypes.func.isRequired,
+  user: PropTypes.oneOfType([
+    PropTypes.shape({
+      username: PropTypes.string,
+      name: PropTypes.string,
+      email: PropTypes.string,
+      _id: PropTypes.string,
+    }),
+    PropTypes.oneOf([null]),
+  ]),
+  onLogout: PropTypes.func.isRequired,
+  isSaved: PropTypes.bool,
+};
+
+Navigation.defaultProps = {
+  user: null,
+  isSaved: false,
+};

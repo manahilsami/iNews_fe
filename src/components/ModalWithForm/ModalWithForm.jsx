@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import { useEffect } from "react";
+import PropTypes from "prop-types";
 import "./ModalWithForm.css";
 
 function ModalWithForm({
@@ -51,3 +52,16 @@ function ModalWithForm({
   );
 }
 export default ModalWithForm;
+
+ModalWithForm.propTypes = {
+  title: PropTypes.string.isRequired,
+  isOpen: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+  children: PropTypes.node.isRequired,
+  noValidate: PropTypes.bool,
+};
+
+ModalWithForm.defaultProps = {
+  noValidate: false,
+};

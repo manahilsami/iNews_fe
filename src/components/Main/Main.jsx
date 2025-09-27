@@ -2,6 +2,7 @@ import "./Main.css";
 import Preloader from "../Preloader/Preloader";
 import About from "../About/About";
 import notfound from "../../images/not-found_v1.png";
+import PropTypes from "prop-types";
 
 function Main({ isLoading, searchResults, hasSearched }) {
   return (
@@ -26,3 +27,9 @@ function Main({ isLoading, searchResults, hasSearched }) {
 }
 
 export default Main;
+
+Main.propTypes = {
+  isLoading: PropTypes.bool.isRequired,
+  searchResults: PropTypes.arrayOf(PropTypes.object).isRequired,
+  hasSearched: PropTypes.bool.isRequired,
+};

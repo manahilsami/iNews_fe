@@ -1,5 +1,6 @@
 import "./SavedNews.css";
 import NewsCardList from "../NewsCardList/NewsCardList";
+import PropTypes from "prop-types";
 
 function SavedNews({ user, articles, onDelete }) {
   const keywords = [...new Set(articles.map((a) => a.keyword).filter(Boolean))];
@@ -29,3 +30,33 @@ function SavedNews({ user, articles, onDelete }) {
 }
 
 export default SavedNews;
+
+SavedNews.propTypes = {
+  user: PropTypes.oneOfType([
+    PropTypes.shape({
+      username: PropTypes.string,
+      name: PropTypes.string,
+      email: PropTypes.string,
+      _id: PropTypes.string,
+    }),
+    PropTypes.oneOf([null]),
+  ]),
+  articles: PropTypes.arrayOf(
+    PropTypes.exact({
+      _id: PropTypes.string,
+      id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+      link: PropTypes.string,
+      image: PropTypes.string,
+      title: PropTypes.string,
+      keyword: PropTypes.string,
+      date: PropTypes.string,
+      description: PropTypes.string,
+      source: PropTypes.string,
+    })
+  ).isRequired,
+  onDelete: PropTypes.func.isRequired,
+};
+
+SavedNews.defaultProps = {
+  user: null,
+};
