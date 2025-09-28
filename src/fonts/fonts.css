@@ -1,10 +1,3 @@
-/*
-  Self-hosted font declarations.
-  NOTE: Current files are .ttf; for production consider converting to .woff2 (smaller & faster).
-  Keep font-display: swap for better perceived performance and avoiding FOIT.
-*/
-
-/* ===================== Roboto ===================== */
 @font-face {
   font-family: "Roboto";
   font-style: normal;
@@ -30,7 +23,6 @@
     url("./Roboto-Bold.ttf") format("truetype");
 }
 
-/* ===================== Roboto Slab ===================== */
 @font-face {
   font-family: "Roboto Slab";
   font-style: normal;
@@ -48,24 +40,20 @@
     url("./RobotoSlab-Bold.ttf") format("truetype");
 }
 
-/* ===================== Inter ===================== */
 @font-face {
   font-family: "Inter";
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  /* File provided is named Inter_28pt-Regular.ttf. If possible, rename to Inter-Regular.ttf for clarity. */
   src: local("Inter"), local("Inter Regular"),
     url("./Inter_28pt-Regular.ttf") format("truetype");
 }
 
-/* ===================== Source Sans Pro ===================== */
 @font-face {
   font-family: "Source Sans Pro";
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  /* Using SourceSans3-Regular.ttf asset while keeping legacy family name used in CSS. */
   src: local("Source Sans 3"), local("Source Sans Pro"),
     url("./SourceSans3-Regular.ttf") format("truetype");
 }

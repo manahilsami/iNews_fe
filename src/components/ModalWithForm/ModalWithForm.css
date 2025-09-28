@@ -75,7 +75,7 @@
     position: fixed;
     top: 16px;
     right: 16px;
-    left: auto; /* override desktop left so right positioning works */
+    left: auto;
     width: 24px;
     height: 24px;
     background: transparent url(../../images/back.svg) center/24px 24px

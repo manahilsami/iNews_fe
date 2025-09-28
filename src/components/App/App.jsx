@@ -248,7 +248,7 @@ function App() {
       </div>
 
       <Footer />
-      {/* Modals */}
+
       <LoginModal
         isOpen={isLoginModalOpen}
         onClose={handleCloseLoginModal}
