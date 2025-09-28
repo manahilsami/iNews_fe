@@ -62,7 +62,7 @@
 
 @media (min-width: 768px) and (max-width: 1023px) {
   .news-card-list__grid {
-    gap: 8px;
+    gap: 16px;
     margin-left: 40px;
     margin-right: 40px;
     margin-bottom: 32px;
