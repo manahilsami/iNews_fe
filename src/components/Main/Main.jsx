@@ -1,7 +1,7 @@
 import "./Main.css";
 import Preloader from "../Preloader/Preloader";
 import About from "../About/About";
-import notfound from "../../images/not-found_v1.png";
+import notfound from "../../images/not-found_v1.svg";
 import PropTypes from "prop-types";
 
 function Main({ isLoading, searchResults, hasSearched }) {

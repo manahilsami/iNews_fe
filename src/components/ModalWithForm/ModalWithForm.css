@@ -18,7 +18,7 @@
 }
 
 .modal__close {
-  background-image: url(../../images/back.png);
+  background-image: url(../../images/back.svg);
   position: absolute;
   top: -42px;
   right: -42px;

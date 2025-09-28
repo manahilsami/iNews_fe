@@ -33,7 +33,7 @@
   height: 24px;
   border: none;
   background: transparent;
-  background-image: url("../../images/menu.png");
+  background-image: url("../../images/menu_white.svg");
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
@@ -88,7 +88,7 @@
   }
 
   .header--saved .header__menu {
-    background-image: url("../../images/menu_black.png");
+    background-image: url("../../images/menu_black.svg");
   }
 
   body.modal-open .header__menu {

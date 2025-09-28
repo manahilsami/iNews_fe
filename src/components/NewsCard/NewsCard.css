@@ -1,5 +1,5 @@
 .news-card__trash {
-  background-image: url("../../images/trash-inactive.png");
+  background-image: url("../../images/trash-inactive.svg");
   position: absolute;
   top: 24px;
   left: 336px;
@@ -18,7 +18,7 @@
 
 .news-card__trash:hover,
 .news-card__trash:active {
-  background-image: url("../../images/trash-active.png");
+  background-image: url("../../images/trash-active.svg");
 }
 
 .news-card__trash::after {
@@ -86,7 +86,7 @@
 }
 
 .news-card__bookmark {
-  background-image: url("../../images/bookmark-inactive.png");
+  background-image: url("../../images/bookmark_inactive.svg");
   position: absolute;
   top: 24px;
   left: 336px;
@@ -102,11 +102,14 @@
 
 .news-card__bookmark:hover,
 .news-card__bookmark:active {
-  background-image: url("../../images/bookmark-active.png");
+  background-image: url("../../images/bookmark_active.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
 .news-card__bookmark-colored {
-  background-image: url("../../images/bookmark_colored.png");
+  background-image: url("../../images/bookmark_colored.svg");
   position: absolute;
   top: 24px;
   left: 336px;

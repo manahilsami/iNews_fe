@@ -1,6 +1,6 @@
 import "./Navigation.css";
 import logoutIconDark from "../../images/logout.svg";
-import logoutIconWhite from "../../images/logout-white.png";
+import logoutIconWhite from "../../images/logout-white.svg";
 import { Link, useLocation } from "react-router-dom";
 import PropTypes from "prop-types";
 

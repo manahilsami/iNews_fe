@@ -81,7 +81,7 @@ iNews_fe/
 		utils/
 		main.jsx
 	public/
-		favicon.png
+		favicon.svg
 ```
 
 ### Notes
