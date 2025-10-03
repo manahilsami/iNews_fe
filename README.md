@@ -22,7 +22,7 @@ React + Vite frontend for NewsExplorer. Lets users search news via NewsAPI, save
 
 - Node.js 18+
 - A NewsAPI key (https://newsapi.org/)
-- Backend running (default http://localhost:3002)
+- Backend server running (see [Backend Repository](https://github.com/manahilsami/iNews_be) )
 
 ### Installation
 
