@@ -2,10 +2,6 @@
 
 React + Vite frontend for NewsExplorer. Lets users search news via NewsAPI, save articles (when logged in), and view/delete saved articles.
 
-## Frontend
-
-- Production frontend: http://newsexplorer.fpr.net
-
 ## Features
 
 - Search news (past 7 days) by keyword
