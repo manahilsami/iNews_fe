@@ -1,0 +1,120 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  z-index: 1000;
+  padding: 34px 36px;
+}
+
+.modal_opened {
+  visibility: visible;
+}
+
+.modal__close {
+  position: absolute;
+  top: 181px;
+  left: 961px;
+  width: 40px;
+  height: 40px;
+  border: none;
+  padding: 0;
+  background: transparent url(../../images/back.svg) center center / 40px 40px
+    no-repeat;
+  cursor: pointer;
+  z-index: 1002;
+}
+
+.modal__content {
+  background-color: #fff;
+  position: relative;
+  padding: 34px 36px 28px 36px;
+  width: 430px;
+  box-sizing: border-box;
+  border-radius: 16px;
+  border-width: 1px;
+  border-color: transparent;
+  z-index: 1001;
+}
+
+.modal__title {
+  font-family: Roboto;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #000000;
+  margin: 0;
+  padding-bottom: 22px;
+}
+
+.modal__form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+@media screen and (max-width: 767px) {
+  .modal__content {
+    width: 320px;
+    height: 560px;
+    padding: 16px;
+    background-color: #fff;
+    position: absolute;
+    top: 56px;
+  }
+  .modal__close {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    left: auto;
+    width: 24px;
+    height: 24px;
+    background: transparent url(../../images/back.svg) center/24px 24px
+      no-repeat;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .modal {
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 0;
+  }
+
+  .modal__close {
+    position: fixed;
+    top: 161px;
+    left: 605px;
+    right: auto;
+    width: 40px;
+    height: 40px;
+    background-size: 40px 40px;
+  }
+
+  .modal__content {
+    width: 430px;
+    top: 207px;
+    left: 169px;
+    padding: 34px 36px 28px 36px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .modal__form {
+    padding: 0;
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: space-between;
+  }
+}

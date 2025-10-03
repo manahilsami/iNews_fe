@@ -1,0 +1,129 @@
+.login-modal__label {
+  font-family: Inter;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #2f71e5;
+  padding-bottom: 24px;
+}
+.login-modal__input {
+  display: block;
+  font-family: Inter;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #000;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 8px 0 0 0;
+  width: 100%;
+}
+
+.login-modal__input::placeholder {
+  color: rgba(0, 0, 0, 0.2);
+  opacity: 1;
+}
+
+.login-modal__submit-btn {
+  width: 358px;
+  height: 64px;
+  border-radius: 100px;
+  font-family: Roboto;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: 0px;
+  text-align: center;
+  vertical-align: middle;
+  color: #b6bcbf;
+  background-color: #e6e8eb;
+  border: none;
+  cursor: pointer;
+  display: block;
+  margin: 0 auto;
+}
+
+.login-modal__submit-btn:enabled {
+  color: #fff;
+  background-color: #2f71e5;
+}
+
+.login-modal__login-or-text {
+  padding-top: 16px;
+  border: none;
+  background-color: transparent;
+  font-family: Inter;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-align: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 0;
+}
+
+.login-modal__signup-btn {
+  border: none;
+  background-color: transparent;
+  color: #2f71e5;
+  cursor: pointer;
+}
+
+.login-modal__error {
+  font-family: Inter;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #ff0000;
+  margin-top: 8px;
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .login-modal__submit-btn {
+    width: 320px;
+    margin-top: auto;
+    height: 56px;
+    font-size: 16px;
+    margin: 0 auto;
+  }
+
+  .login-modal__btn-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .login-modal__login-or-text {
+    margin-bottom: 0;
+  }
+
+  .login-modal__login-or-text {
+    margin-bottom: 0;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .login-modal__btn-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .login-modal__submit-btn {
+    width: 288px;
+    text-align: center;
+  }
+
+  .login-modal__login-or-text {
+    text-align: center;
+    padding-bottom: 0;
+    margin-bottom: 12px;
+  }
+}

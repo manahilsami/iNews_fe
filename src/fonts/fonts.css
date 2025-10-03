@@ -1,0 +1,59 @@
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Roboto"), local("Roboto-Regular"),
+    url("./Roboto-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("Roboto Medium"), local("Roboto-Medium"),
+    url("./Roboto-Medium.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local("Roboto Bold"), local("Roboto-Bold"),
+    url("./Roboto-Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Roboto Slab";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Roboto Slab"), local("RobotoSlab-Regular"),
+    url("./RobotoSlab-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Roboto Slab";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local("Roboto Slab Bold"), local("RobotoSlab-Bold"),
+    url("./RobotoSlab-Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Inter"), local("Inter Regular"),
+    url("./Inter_28pt-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Source Sans Pro";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Source Sans 3"), local("Source Sans Pro"),
+    url("./SourceSans3-Regular.ttf") format("truetype");
+}
